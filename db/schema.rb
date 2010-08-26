@@ -12,7 +12,7 @@
 ActiveRecord::Schema.define(:version => 20100826224418) do
 
   create_table "answer_entries", :force => true do |t|
-    t.integer  "QuizEntry_id"
+    t.integer  "quiz_entry_id"
     t.integer  "answer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -72,9 +72,9 @@ ActiveRecord::Schema.define(:version => 20100826224418) do
     t.boolean  "email_confirmed",                   :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "FirstName"
-    t.string   "LastName"
-    t.string   "Username"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "username"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

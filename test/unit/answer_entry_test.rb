@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class AnswerEntryTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  
+  test "Valid answer_entry fixture is valid" do
+    assert answer_entries(:valid).valid?
   end
+
 end

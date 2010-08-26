@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class AnswerTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+ 
+  test "Valid answer fixture is valid" do
+    assert answers(:valid).valid?
   end
+
 end

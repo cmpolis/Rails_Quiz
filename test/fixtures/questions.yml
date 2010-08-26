@@ -1,5 +1,6 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 valid:
-  type: 1
+  id: 1
+  type: 
   text: What is the largest city in the SF bay area?

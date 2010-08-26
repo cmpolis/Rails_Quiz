@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class QuizTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+
+  test "Valid quiz fixture is valid" do
+    assert quizzes(:valid).valid?
   end
+
 end

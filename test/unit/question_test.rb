@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class QuestionTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  
+  test "Valid question fixture is valid" do
+    assert questions(:valid).valid?
   end
+
 end

@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class GroupMembershipTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+
+  test "Valid group_membership fixture is valid" do
+    assert group_memberships(:valid).valid?
   end
+
 end
