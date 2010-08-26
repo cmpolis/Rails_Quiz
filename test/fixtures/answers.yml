@@ -1,11 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  text: MyString
-  right: false
-  quiz_id: 1
+valid:
+  id: 1
+  text: San Jose
+  right: true
+  question_id: 1
 
-two:
-  text: MyString
+incorrect:
+  id: 2
+  text: Oakland
   right: false
-  quiz_id: 1
+  question_id: 1

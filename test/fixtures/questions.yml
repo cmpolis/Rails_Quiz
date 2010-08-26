@@ -1,9 +1,5 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
+valid:
   type: 1
-  text: MyString
-
-two:
-  type: 1
-  text: MyString
+  text: What is the largest city in the SF bay area?

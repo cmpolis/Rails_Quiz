@@ -1,11 +1,6 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
+valid:
   admin_id: 1
-  name: MyString
-  password: MyString
-
-two:
-  admin_id: 1
-  name: MyString
-  password: MyString
+  name: Rails Group
+  password: rails
