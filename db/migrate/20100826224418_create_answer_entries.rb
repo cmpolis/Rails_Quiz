@@ -1,7 +1,7 @@
 class CreateAnswerEntries < ActiveRecord::Migration
   def self.up
     create_table :answer_entries do |t|
-      t.integer :QuizEntry_id
+      t.integer :quiz_entry_id
       t.integer :answer_id
 
       t.timestamps

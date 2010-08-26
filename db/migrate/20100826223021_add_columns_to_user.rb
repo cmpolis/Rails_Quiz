@@ -3,14 +3,14 @@ class AddColumnsToUser < ActiveRecord::Migration
   #Clearance creates columns: email, password  
 
   def self.up
-    add_column :users, :FirstName, :string
-    add_column :users, :LastName, :string
-    add_column :users, :Username, :string
+    add_column :users, :first_name, :string
+    add_column :users, :last_name, :string
+    add_column :users, :username, :string
   end
 
   def self.down
-    remove_column :users, :FirstName
-    remove_column :users, :LastName
-    remove_column :users, :Username
+    remove_column :users, :first_name
+    remove_column :users, :last_name
+    remove_column :users, :username
   end
 end
