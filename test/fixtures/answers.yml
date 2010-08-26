@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  text: MyString
+  right: false
+  quiz_id: 1
+
+two:
+  text: MyString
+  right: false
+  quiz_id: 1
