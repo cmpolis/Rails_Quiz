@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
   has_many :quiz_entries
   has_many :quizzes, :through => :quiz_entries
 
+  validates_length_of :username, :in => 4..16
+  validates_length_of :first_name, :in => 2..16
+  validates_length_of :last_name, :in => 2..16
+
 end
