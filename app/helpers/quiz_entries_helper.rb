@@ -1,0 +1,2 @@
+module QuizEntriesHelper
+end
