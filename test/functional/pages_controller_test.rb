@@ -1,8 +1,9 @@
 require 'test_helper'
 
 class PagesControllerTest < ActionController::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  
+  test "Root url gives pages#home" do
+    assert_generates "/", :controller => "pages", :action => "home"
   end
+
 end
