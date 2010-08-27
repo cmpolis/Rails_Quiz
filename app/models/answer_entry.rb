@@ -1,6 +1,8 @@
 class AnswerEntry < ActiveRecord::Base
 
-  belongs_to :quiz_entry, :foreign_key => "QuizEntry_id", :class_name => "QuizEntry"
+  belongs_to :quiz_entry
   belongs_to :answer
+
+  validates_presence_of :answer_id, :quiz_entry_id
 
 end

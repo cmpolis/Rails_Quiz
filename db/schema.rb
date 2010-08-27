@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20100826224418) do
 
   create_table "questions", :force => true do |t|
     t.integer  "type"
+    t.integer  "quiz_id"
     t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20100826224418) do
     t.integer  "group_id"
     t.boolean  "private"
     t.integer  "creator_id"
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

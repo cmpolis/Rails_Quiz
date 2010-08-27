@@ -6,4 +6,34 @@ class AnswerTest < ActiveSupport::TestCase
     assert answers(:valid).valid?
   end
 
+  test "Answer text is between 2 and 140 characters" do
+    answer = answers(:valid)
+    
+    answer.text = nil
+    assert !answer.save
+    answer.text = "a"
+    assert !answer.save
+    answer.text = "a" * 145
+    assert !answer.save
+
+    answer.text = "Correct answer"
+    assert answer.save
+  end
+
+  test "Answer is either right or wrong" do
+    answer = answers(:valid)
+    answer.right = nil
+    assert !answer.save
+    answer.right = true
+    assert answer.save
+    answer.right = false
+    assert answer.save
+  end  
+
+  test "Answer belongs to a question" do
+    answer = answers(:valid)
+    answer.question_id = nil
+    assert !answer.save
+  end
+
 end

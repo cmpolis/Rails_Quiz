@@ -2,6 +2,7 @@
 
 valid:
   id: 1
-  group_id: 1
+  title: Valid Quiz Fixture
+  group_id: 
   private: false
   creator_id: 1
