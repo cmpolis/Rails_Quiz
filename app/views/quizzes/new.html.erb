@@ -1,2 +1,21 @@
-<h1>Quizzes#new</h1>
-<p>Find me in app/views/quizzes/new.html.erb</p>
+<h3>Make a new quiz</h3>
+<% form_for :quiz, @quiz, :url=>{:action=>:create} do |f| %>
+<%= f.error_messages %>
+<table>
+  <tr> 
+    <td><%=f.label :title, "Quiz Title:"%></td>
+    <td><%= f.text_field :title %></td>
+  </tr>
+  <% if !@groups.nil? %>
+    <tr>
+      <td><%=f.label :private, "Private: "%></td>
+      <td><%= f.check_box :private %></td>
+    </tr>
+    <tr>
+      <td><%=f.label :group_id, "Group: "%></td>
+      <td><%= f.collection_select :group_id, @groups, :id, :name, :include_blank=>"N/A" %></td>
+    </tr>
+    <% end %>
+  <% end %>
+</table>
+<%= submit_tag("Register") %>

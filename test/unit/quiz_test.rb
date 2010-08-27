@@ -37,5 +37,13 @@ class QuizTest < ActiveSupport::TestCase
     quiz.creator_id = nil
     assert !quiz.save
   end
-  
+ 
+  test "Quiz must be private or public (not private)" do
+    quiz = quizzes(:valid)
+    quiz.private = nil
+    assert !quiz.save
+    quiz.private = false
+    assert quiz.save
+  end
+ 
 end
