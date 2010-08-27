@@ -3,7 +3,6 @@ class CreateQuizEntries < ActiveRecord::Migration
     create_table :quiz_entries do |t|
       t.integer :user_id
       t.integer :quiz_id
-      t.string :title
  
       t.timestamps
     end
