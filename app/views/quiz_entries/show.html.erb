@@ -1,2 +1,12 @@
-<h1>QuizEntries#show</h1>
-<p>Find me in app/views/quiz_entries/show.html.erb</p>
+<h3>Results for quiz: <%= @quiz.title %></h3><br />
+<% @questions.each do |question| %>
+  <b><%= question.text %></b><br />
+  <% question.answers.each do |answer| %>
+    <%= "X " if @answers.include?(answer) %>
+    <%= "C " if question.right_ans == answer %>
+    <%= answer.text %><br />
+  <% end %>
+  <br />
+<% end %>
+You scored: <%= @right_answers.length %> / <%= @questions.length %><br />
+<br />
