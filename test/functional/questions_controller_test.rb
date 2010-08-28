@@ -30,5 +30,15 @@ class QuestionsControllerTest < ActionController::TestCase
     get :new, :id => quiz.id
     assert_response(:success) # i.e. not redirected
   end
-
+=begin
+  test "Question#create makes a new quiz, redirects to add another question" do
+    @controller.current_user = Factory(:user)
+    quiz = quizzes(:valid)
+    quiz.creator_id = @controller.current_user.id
+    assert_difference(['Question.count', 'Answer.count']) do
+      post :create, { :question => Factory.attributes_for(:question), :answers => [ Factory.attributes_for(:answer1), Factory.attributes_for(:answer2), Factory.attributes_for(:answer3) ] }
+    end
+    assert_redirected_to :action => "new", :id => quiz.id
+  end
+=end
 end

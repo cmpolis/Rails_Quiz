@@ -8,3 +8,4 @@ Factory.define :quiz do |quiz|
   quiz.creator_id      { 1 }
   quiz.title           { "Valid quiz fixture" }
 end
+
