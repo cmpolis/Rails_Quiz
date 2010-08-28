@@ -17,7 +17,7 @@ class QuestionsControllerTest < ActionController::TestCase
     get :new, :id => 1
     assert_redirected_to root_url
     assert_equal "Must be quiz creator to add a question", flash[:notice]
-    @controller.current_user = 2384
+    @controller.current_user = Factory(:user_high_id)
     get :new, :id => 1
     assert_redirected_to root_url
     assert_equal "Must be quiz creator to add a question", flash[:notice]
@@ -25,10 +25,10 @@ class QuestionsControllerTest < ActionController::TestCase
     user = Factory(:user)
     @controller.current_user = user
     quiz = quizzes(:valid)  
-    quiz.creator_id = @controller.current_user
+    quiz.creator_id = user.id
     quiz.save
     get :new, :id => quiz.id
-    assert_template :new
+    assert_response(:success) # i.e. not redirected
   end
 
 end
