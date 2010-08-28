@@ -1,0 +1,7 @@
+<h3><%= @user.username %></h3>
+<b><%= @user.first_name + " " + @user.last_name %></b><br />
+<h4>Quizzes Taken: </h4>
+<% @quiz_entries.each do |qe| %>
+  <%= qe.quiz.title %><%= "   " + qe.correct.to_s + " / " + qe.possible.to_s %><br />
+<% end %>
+<br />
