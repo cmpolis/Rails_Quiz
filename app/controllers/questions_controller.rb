@@ -24,6 +24,7 @@ class QuestionsController < ApplicationController
     end
     if @question.save
       # add another question
+      flash[:notice] = "Question added"
       redirect_to :action => "new", :id => @question.quiz_id
     else
       # failed save of new question
