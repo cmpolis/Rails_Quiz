@@ -21,13 +21,14 @@ class QuestionsController < ApplicationController
     @question.transaction do 
       @question.id = (Question.last.nil? ? 1 : Question.last.id + 1)
       @question.answers.each { |ans| ans.question_id = @question.id }
+      
+      # Try to save in transaction, but proccess outside of it to free db
+      @save_success = @question.save 
     end
-    if @question.save
-      # add another question
+    if @save_success
       flash[:notice] = "Question added"
       redirect_to :action => "new", :id => @question.quiz_id
     else
-      # failed save of new question
       @quiz = @question.quiz
       render :new
       flash[:notice] = @question.errors.full_messages
