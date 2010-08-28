@@ -1,2 +1,14 @@
-<h1>QuizEntries#new</h1>
-<p>Find me in app/views/quiz_entries/new.html.erb</p>
+<h3>Take quiz: <%= @quiz.title %></h3><br \>
+<% form_for :quiz_entry, @quiz_entry, :url => {:action => :create} do |f| %>
+<%= f.error_messages %>
+  <% @questions.each do |question| %>
+    <b><%= question.text %></b><br \>
+    <% question.answers.each do |answer| %>
+      <%= answer.text %><br \>
+      <%= check_box_tag "ans[]" %>
+    <% end %>
+    <br \>
+  <% end %>
+<% end %>
+<%= submit_tag "Submit quiz" %>
+<br />
