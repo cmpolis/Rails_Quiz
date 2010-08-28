@@ -4,11 +4,14 @@
   <% @questions.each do |question| %>
     <b><%= question.text %></b><br \>
     <% question.answers.each do |answer| %>
-      <%= answer.text %><br \>
-      <%= check_box_tag "ans[]" %>
+      <%= check_box_tag "answers[]", answer.id %>
+      <%= answer.text %><br />
     <% end %>
     <br \>
-  <% end %>
-<% end %>
+    <% end %>
+  <%= f.hidden_field :quiz_id, :value => @quiz.id %>
+  <%= f.hidden_field :user_id, :value => @user.id %>
 <%= submit_tag "Submit quiz" %>
+<% end %>
 <br />
+
