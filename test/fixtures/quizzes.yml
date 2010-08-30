@@ -6,3 +6,5 @@ valid:
   group_id: 
   private: false
   creator_id: 1
+  category_id: 
+  featured: false

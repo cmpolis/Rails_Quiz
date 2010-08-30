@@ -3,6 +3,8 @@ Factory.define :quiz do |quiz|
   quiz.private         { false }
   quiz.creator_id      { 1 }
   quiz.title           { "Valid quiz fixture" }
+  quiz.featured        { false }
+  quiz.category_id     { nil }
 end
 
 Factory.define :category do |cat|

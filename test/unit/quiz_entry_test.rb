@@ -18,4 +18,5 @@ class QuizEntryTest < ActiveSupport::TestCase
     assert !qe.save
   end
 
+
 end

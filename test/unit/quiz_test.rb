@@ -45,5 +45,13 @@ class QuizTest < ActiveSupport::TestCase
     quiz.private = false
     assert quiz.save
   end
+
+  test "Quiz must be featured or not featured" do
+    quiz = quizzes(:valid)
+    quiz.featured = nil
+    assert !quiz.save
+    quiz.featured = false
+    assert quiz.save
+  end
  
 end
