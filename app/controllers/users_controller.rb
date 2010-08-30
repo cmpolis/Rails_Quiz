@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Already registered"
       redirect_to root_url
     else
-      @user = User.nw params[:user]
+      @user = User.new params[:user]
       render :new
     end
   end
