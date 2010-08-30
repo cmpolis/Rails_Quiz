@@ -13,4 +13,9 @@ class Question < ActiveRecord::Base
     answers.find_by_right true
   end
 
+  # returns number of right answers
+  def right_answers
+    answers.find_all_by_right(true).length
+  end
+
 end

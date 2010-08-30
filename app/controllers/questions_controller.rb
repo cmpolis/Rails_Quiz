@@ -16,22 +16,26 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(params[:question])
-    
+
     # Get next available id for question, assign it into new answers
     @question.transaction do 
       @question.id = (Question.last.nil? ? 1 : Question.last.id + 1)
       @question.answers.each { |ans| ans.question_id = @question.id }
       
       # Try to save in transaction, but proccess outside of it to free db
-      @save_success = @question.save 
-    end
-    if @save_success
+      # @save_success = @question.save 
+      @question.save if @question.errors.empty?
+      @question.errors.add_to_base "Must have exactly one right answer" \
+           if @question.right_answers != 1
+    end 
+
+    if @question.errors.empty?
       flash[:notice] = "Question added"
       redirect_to :action => "new", :id => @question.quiz_id
     else
       @quiz = @question.quiz
       render :new
-      flash[:notice] = @question.errors.full_messages
+      # flash[:notice] = @question.errors.full_messages
     end
   end
 
