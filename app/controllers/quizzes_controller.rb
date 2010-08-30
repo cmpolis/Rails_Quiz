@@ -14,6 +14,7 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.new(params[:quiz])
     @quiz.creator_id = current_user.id
     @quiz.private ||= false
+    @quiz.featured ||= false
     if @quiz.save
       redirect_to :controller => "questions", :action => "new", :id => @quiz.id
     else
