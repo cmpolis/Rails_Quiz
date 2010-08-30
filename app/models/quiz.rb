@@ -2,6 +2,7 @@ class Quiz < ActiveRecord::Base
 
   has_one :creator, :class_name => "user"
   belongs_to :group
+  belongs_to :category
 
   has_many :questions
   has_many :answers, :through => :questions
