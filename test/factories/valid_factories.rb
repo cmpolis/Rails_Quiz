@@ -1,7 +1,3 @@
-#Factory.sequence :email do |n|
-#  "user#{n}@example.com"
-#end
-
 Factory.define :quiz do |quiz|
   quiz.group_id        { nil }
   quiz.private         { false }
@@ -9,3 +5,13 @@ Factory.define :quiz do |quiz|
   quiz.title           { "Valid quiz fixture" }
 end
 
+Factory.define :category do |cat|
+  cat.title            { "Entertainment" }
+  cat.parent_id        { nil }
+  cat.id               { 30 }
+end
+
+Factory.define :category_child do |cat|
+  cat.title            { "Television" }
+  cat.parent_id        { 30 }
+end
