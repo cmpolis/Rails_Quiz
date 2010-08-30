@@ -1,2 +1,7 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<h3>Quizzes for <%= @category.title %></h3>
+<%= render :partial => "common/quizline", :collection => @category.quizzes %>
+<% @category.children.each do |sub_cat| %>
+  <h4><%= sub_cat.title %></h4>
+  <%= render :partial => "common/quizline", :collection => sub_cat.quizzes %>
+<% end %>
+<br />
