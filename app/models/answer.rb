@@ -8,5 +8,8 @@ class Answer < ActiveRecord::Base
 
   validates_length_of :text, :in => (2..140)
   validates_inclusion_of :right, :in => [true,false]
-  validates_presence_of :question_id
+  
+  # doesnt work with saving to unsaved 
+  #   ... because question uses acceptes_nested_attributes for...
+  # validates_presence_of :question_id
 end

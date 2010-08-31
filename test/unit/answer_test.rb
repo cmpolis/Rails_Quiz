@@ -30,10 +30,4 @@ class AnswerTest < ActiveSupport::TestCase
     assert answer.save
   end  
 
-  test "Answer belongs to a question" do
-    answer = answers(:valid)
-    answer.question_id = nil
-    assert !answer.save
-  end
-
 end
