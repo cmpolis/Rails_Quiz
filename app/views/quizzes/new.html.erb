@@ -3,8 +3,12 @@
 <%= f.error_messages %>
 <table>
   <tr> 
-    <td><%=f.label :title, "Quiz Title:"%></td>
+    <td><%= f.label :title, "Quiz Title:"%></td>
     <td><%= f.text_field :title %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :category, "Category" %></td>
+    <td><%= f.collection_select :category_id, Category.all, :id, :title, {:include_blank => 'None'} %></td>
   </tr>
   <% if !@groups.nil? %>
     <tr>
