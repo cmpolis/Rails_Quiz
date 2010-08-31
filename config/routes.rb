@@ -1,7 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
  
-  map.connect '/sign_up', :controller => 'users', :action => 'new'  
-
+  map.connect '/sign_up', :controller => 'users', :action => 'new'    
   Clearance::Routes.draw(map)
   # The priority is based upon order of creation: first created -> highest priority.
 

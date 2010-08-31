@@ -1,10 +1,11 @@
 <h3>Take quiz: <%= @quiz.title %></h3><br \>
+<%= @selected %>
 <% form_for :quiz_entry, @quiz_entry, :url => {:action => :create} do |f| %>
 <%= f.error_messages %>
   <% @questions.each do |question| %>
     <b><%= question.text %></b><br \>
     <% question.answers.each do |answer| %>
-      <%= check_box_tag "answers[]", answer.id %>
+      <%= check_box_tag "answers[]", answer.id, @selected.include?(answer.id.to_s) %>
       <%= answer.text %><br />
     <% end %>
     <br \>
