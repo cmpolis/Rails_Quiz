@@ -28,4 +28,13 @@ class QuizzesController < ApplicationController
   def edit
   end
 
+  def delete
+    if user_is_admin?
+      flash[:notice] = "Quiz deleted #{Quiz.delete params[:id]}"
+      redirect_to request.referer
+    else
+      flash[:notice] = "Must be admin to delete quiz"
+    end 
+  end
+
 end

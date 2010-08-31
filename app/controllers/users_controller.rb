@@ -14,4 +14,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def delete
+    if user_is_admin?
+      flash[:notice] = "User deleted #{User.delete params[:id]}"
+      redirect_to request.referer
+    else
+      flash[:notice] = "Must be admin to delete user"
+    end
+  end
+
 end
+

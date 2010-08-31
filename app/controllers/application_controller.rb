@@ -8,4 +8,10 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+
+  # simple admin check for now...
+  def user_is_admin?
+    !current_user.nil? and current_user.id == 1
+  end
+  
 end

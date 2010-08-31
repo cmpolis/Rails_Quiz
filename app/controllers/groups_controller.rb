@@ -25,4 +25,13 @@ class GroupsController < ApplicationController
   def edit
   end
 
+  def delete
+    if user_is_admin?
+      flash[:notice] = "Group deleted #{Group.delete params[:id]}"
+      redirect_to request.referer
+    else
+      flash[:notice] = "Must be admin to delete group"
+    end
+  end
+
 end
