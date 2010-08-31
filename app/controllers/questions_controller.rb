@@ -25,7 +25,7 @@ class QuestionsController < ApplicationController
     if @question.errors.empty?
       @question.save
       flash[:notice] = "Question added"
-      redirect_to :action => "new", :id => @question.quiz_id
+      redirect_to add_question_path(@question.quiz)
     else
       @quiz = @question.quiz
       render :new

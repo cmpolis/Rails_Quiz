@@ -16,7 +16,7 @@ class QuizzesController < ApplicationController
     @quiz.private ||= false
     @quiz.featured ||= false
     if @quiz.save
-      redirect_to :controller => "questions", :action => "new", :id => @quiz.id
+      redirect_to add_question_path(@quiz)
     else
       render :new
     end
@@ -28,7 +28,7 @@ class QuizzesController < ApplicationController
   def edit
   end
 
-  def delete
+  def destroy
     if user_is_admin?
       flash[:notice] = "Quiz deleted #{Quiz.delete params[:id]}"
       redirect_to request.referer

@@ -1,6 +1,16 @@
 ActionController::Routing::Routes.draw do |map|
  
-  map.connect '/sign_up', :controller => 'users', :action => 'new'    
+  map.sign_up '/sign_up', :controller => 'users', :action => 'new'    
+
+  map.add_question '/add_question/:id', :controller => 'questions', :action => 'new'
+  map.take_quiz '/take_quiz/:id', :controller => 'quiz_entries', :action => 'new'
+  map.quiz_results '/results/:id', :controller => 'quiz_entries', :action => 'show'  
+
+  map.resources :groups
+  map.resources :users
+  map.resources :quizzes
+  map.resources :questions
+  
   Clearance::Routes.draw(map)
   # The priority is based upon order of creation: first created -> highest priority.
 

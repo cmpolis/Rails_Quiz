@@ -35,7 +35,7 @@ class QuizEntriesController < ApplicationController
 
     if @quiz_entry.errors.empty?
       @quiz_entry.save
-      redirect_to :controller => "quiz_entries", :action => "show", :id => @quiz_entry.id
+      redirect_to quiz_results_path(@quiz_entry)
     else
       flash[:notice] = "Quiz submission unsuccesful"
       @user = current_user

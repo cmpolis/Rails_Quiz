@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     if user_is_admin?
       flash[:notice] = "User deleted #{User.delete params[:id]}"
       redirect_to request.referer

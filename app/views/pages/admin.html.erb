@@ -14,7 +14,7 @@
     <td><%= quiz.id %></td>
     <td><%= quiz.title %></td>
     <td><%= quiz.category.title unless quiz.category_id.nil? %></td>
-    <td><%= link_to "delete", :controller => "Quizzes", :action => "delete", :id => quiz.id %></td>
+    <td><%= link_to "delete", quiz_path(quiz), :method => :delete %></td>
     <td><%= quiz.featured %> | <%= link_to "X", :controller => "Quizzes", :action => "feature", :id => quiz.id %></td>
   </tr>
 <% end %>
@@ -36,7 +36,7 @@
     <td><%= "#{user.last_name}, #{user.first_name}" %></td>
     <td><%= user.quiz_entries.length %></td>
     <td><%= user.created_quizzes.length %></td>
-    <td><%= link_to "delete", :controller => "Users", :action => "delete", :id => user.id %></td>
+    <td><%= link_to "delete", user_path(user), :method => :delete %></td>
 <% end %>
 </table>
 
@@ -55,7 +55,7 @@
     <td><%= group.name %></td>
     <td><%= group.users.length %></td>
     <td><%= group.admin.username %></td>
-    <td><%= link_to "delete", :controller => "Groups", :action => "delete", :id => group.id %></td>
+    <td><%= link_to "delete", group_path(group), :method => :delete %></td>
   <tr>
 <% end %>
 </table>
