@@ -1,2 +1,3 @@
-<h1>Groups#show</h1>
-<p>Find me in app/views/groups/show.html.erb</p>
+<h3><%= @group.name %></h3>
+<%= link_to "Join", :controller => "group_memberships", :action => "create", :group_id => @group.id %><br />
+
