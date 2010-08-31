@@ -1,7 +1,8 @@
 class PagesController < ApplicationController
   
   def home
-    @quizzes = Quiz.find_all_by_private false 
+    @quizzes = Quiz.find_all_by_private false
+    @featured = Quiz.find_all_by_private_and_featured false, true
   end
 
   def about

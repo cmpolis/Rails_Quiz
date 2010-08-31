@@ -1,4 +1,6 @@
-<h2>All public quizzes:</h2>
+<h3>Featured quizzes:</h3>
+<%= render :partial => "common/quizline", :collection => @featured %>
+<h3>All public quizzes:</h3>
 <%= render :partial => "common/quizline", :collection => @quizzes %>
 <br \>
 <br \>
