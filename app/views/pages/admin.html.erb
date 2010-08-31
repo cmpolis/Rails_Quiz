@@ -1,0 +1,61 @@
+<h3>Admin panel</h3>
+
+<h4>Quizzes</h4>
+<table border="1">
+<tr>
+  <td>ID</td>
+  <td>Title</td>
+  <td>Category</td>
+  <td>delete</td>
+  <td>Featured</td>
+</tr>
+<% @quizzes.each do |quiz| %>
+  <tr>
+    <td><%= quiz.id %></td>
+    <td><%= quiz.title %></td>
+    <td><%= quiz.category.title unless quiz.category_id.nil? %></td>
+    <td><%= link_to "delete", :controller => "Quizzes", :action => "delete", :id => quiz.id %></td>
+    <td><%= quiz.featured %> | <%= link_to "X", :controller => "Quizzes", :action => "feature", :id => quiz.id %></td>
+  </tr>
+<% end %>
+</table>
+
+<h4>Users</h4>
+<table border="1">
+<tr>
+  <td>ID</td>
+  <td>Username</td>
+  <td>Real name</td>
+  <td>Quizzes taken</td>
+  <td>Quizzes made</td>
+</tr>
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.username %></td>
+    <td><%= "#{user.last_name}, #{user.first_name}" %></td>
+    <td><%= user.quiz_entries.length %></td>
+    <td><%= user.created_quizzes.length %></td>
+    <td><%= link_to "delete", :controller => "Users", :action => "delete", :id => user.id %></td>
+<% end %>
+</table>
+
+<h4>Groups</h4>
+<table border="1">
+<tr>
+  <td>ID</td>
+  <td>Name</td>
+  <td>Users</td>
+  <td>Admin</td>
+  <td>Delete</td>
+</tr>
+<% @groups.each do |group| %>
+  <tr>
+    <td><%= group.id %></td>
+    <td><%= group.name %></td>
+    <td><%= group.users.length %></td>
+    <td><%= group.admin %></td>
+    <td><%= link_to "delete", :controller => "Groups", :action => "delete", :id => group.id %></td>
+  <tr>
+<% end %>
+</table>
