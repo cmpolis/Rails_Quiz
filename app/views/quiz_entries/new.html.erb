@@ -1,5 +1,6 @@
-<h3>Take quiz: <%= @quiz.title %></h3><br \>
-<%= @selected %>
+<h3>Take quiz: <%= @quiz.title %></h3>
+by <%= @quiz.creator.username %><br />
+taken <%= @quiz.quiz_entries.length %> times<br /><br />
 <% form_for :quiz_entry, @quiz_entry, :url => {:action => :create} do |f| %>
 <%= f.error_messages %>
   <% @questions.each do |question| %>
