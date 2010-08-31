@@ -19,7 +19,8 @@ class QuizEntriesController < ApplicationController
    
     # build errors for @quiz_entry
     @quiz_entry.valid?
-     
+  
+    params[:answers] ||= []   
     params[:answers].each do |answer|
       @quiz_entry.answer_entries.build :answer_id => answer
     end
