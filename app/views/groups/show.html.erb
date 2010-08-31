@@ -1,3 +1,8 @@
 <h3><%= @group.name %></h3>
+<h4>Users</h4>
+<%= render :partial => "common/userline", :collection => @group.users %>
+<h4>Quizzes</h4>
+<%= render :partial => "common/quizline", :collection => @group.quizzes %>
+
 <%= link_to "Join", :controller => "group_memberships", :action => "create", :group_id => @group.id %><br />
 
