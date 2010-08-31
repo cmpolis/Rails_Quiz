@@ -54,8 +54,15 @@
     <td><%= group.id %></td>
     <td><%= group.name %></td>
     <td><%= group.users.length %></td>
-    <td><%= group.admin %></td>
+    <td><%= group.admin.username %></td>
     <td><%= link_to "delete", :controller => "Groups", :action => "delete", :id => group.id %></td>
   <tr>
 <% end %>
 </table>
+
+<h4>Stats</h4>
+# of quizzes: <%= @quizzes.length %><br />
+# of users: <%= @users.length %><br />
+# of groups: <%= @groups.length %><br />
+# of quizzes taken: <%= @quiz_entries.length %><br />
+<br />

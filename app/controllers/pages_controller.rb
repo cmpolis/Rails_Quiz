@@ -14,6 +14,7 @@ class PagesController < ApplicationController
       @quizzes = Quiz.all
       @users = User.all
       @groups = Group.all
+      @quiz_entries = QuizEntry.all
     else
       flash[:notice] = "You do not have admin privelages"
       redirect_to root_url
