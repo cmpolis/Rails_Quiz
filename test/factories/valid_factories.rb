@@ -21,4 +21,5 @@ end
 Factory.define :group do |group|
   group.admin_id       { 1 }
   group.name           { "Valid group" }
+  group.id             { 1 }
 end
