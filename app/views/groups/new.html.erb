@@ -1,2 +1,9 @@
-<h1>Groups#new</h1>
-<p>Find me in app/views/groups/new.html.erb</p>
+<h3>Make a new group</h3>
+<% form_for :group, @group, :url=>{:action=>:create} do |f| %>
+<%= f.error_messages %>
+  <%= f.label :name, "Name: "%>
+  <%= f.text_field :name %><br \>
+  <%= f.hidden_field :admin_id, :value => current_user.id %>
+  <%= submit_tag "Make group" %>
+<% end %>
+

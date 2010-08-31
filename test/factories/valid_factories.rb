@@ -17,3 +17,8 @@ Factory.define :category_child do |cat|
   cat.title            { "Television" }
   cat.parent_id        { 30 }
 end
+
+Factory.define :group do |group|
+  group.admin_id       { 1 }
+  group.name           { "Valid group" }
+end
