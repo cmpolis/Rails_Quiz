@@ -1,5 +1,13 @@
 class CategoriesController < ApplicationController
-  def new
+  
+  def create
+    if user_is_admin?
+      @category = Category.new params[:category]
+      flash[:notice] = @category.save ? "#{@category.title} category saved" : "Unable to create category" 
+    else
+      flas[:notice] = "Must be admin to create a category"
+    end
+    redirect_to request.referer
   end
 
   def show
