@@ -2,6 +2,8 @@ ActionController::Routing::Routes.draw do |map|
  
   map.sign_up '/sign_up', :controller => 'users', :action => 'new'    
 
+  map.join_group '/join_group/:group_id', :controller => 'group_memberships', :action => 'create'
+
   map.add_question '/add_question/:id', :controller => 'questions', :action => 'new'
   map.take_quiz '/take_quiz/:id', :controller => 'quiz_entries', :action => 'new'
   map.quiz_results '/results/:id', :controller => 'quiz_entries', :action => 'show'  

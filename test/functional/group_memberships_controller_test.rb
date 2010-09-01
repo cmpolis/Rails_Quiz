@@ -19,4 +19,16 @@ class GroupMembershipsControllerTest < ActionController::TestCase
     # redirect to confirmation page, group page, referer or root!?....
     # assert_redirected_to :controller => "groups", :action => "show", :id => GroupMembership.last.group_id
   end
+
+  test "must not be able to join group you are already a member of" do
+    @controller.current_user = Factory(:user)
+    group = Factory(:group)
+    
+    post :create, { :group_id => 1 }
+    assert_no_difference('GroupMembership.count') do
+      post :create, { :group_id => 1 }
+    end
+    assert_equal "Already a member of #{group.name}", flash[:notice]
+  end
+
 end
