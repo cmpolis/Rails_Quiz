@@ -1,3 +1,5 @@
+<% title "Add question to #{@quiz.title}" %>
+
 <h3>Add question to <%= @quiz.title %></h3>
 <% form_for :question, @question, :url => {:action => :create} do |f| %>
 <%= f.error_messages %>

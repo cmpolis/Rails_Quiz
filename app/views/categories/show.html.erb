@@ -1,3 +1,4 @@
+<% title "#{@category.title}" %>
 <h3>Quizzes for <%= @category.title %></h3>
 <%= render :partial => "common/quizline", :collection => @category.quizzes %>
 <% @category.children.each do |sub_cat| %>
