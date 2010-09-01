@@ -1,0 +1,16 @@
+<% title "#{@quiz_entry.quiz.title} - #{@question.text}" %>
+
+<h3><%= @quiz.title %></h3>
+<b><%= @question.text %></b><br />
+<% form_for :question_submit, @question_submit, :url => {:action => "proccess_question"} do |f| %>
+  <%= f.error_messages %>
+  <% @question.answers.each do |answer| %>
+    <%= check_box_tag "answer[]", answer.id, false %>
+    <%= answer.text %><br />
+  <% end %>
+  <%= f.hidden_field :quiz_entry, :value => @quiz_entry.id %>
+  <%= f.hidden_field :question, :value => params[:question] %>
+  <%= submit_tag "Submit answer" %><br />
+<% end %>
+<%= "#{params[:question]} / #{@quiz.questions.length}" %>
+<br />

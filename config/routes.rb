@@ -5,7 +5,10 @@ ActionController::Routing::Routes.draw do |map|
   map.join_group '/join_group/:group_id', :controller => 'group_memberships', :action => 'create'
 
   map.add_question '/add_question/:id', :controller => 'questions', :action => 'new'
+  
   map.take_quiz '/take_quiz/:id', :controller => 'quiz_entries', :action => 'new'
+  map.take_quiz_question '/take_quiz/:id/:question', :controller => 'quiz_entries', :action => 'single_question'  
+
   map.quiz_results '/results/:id', :controller => 'quiz_entries', :action => 'show'  
 
   map.resources :groups
