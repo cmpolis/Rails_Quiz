@@ -16,6 +16,7 @@ class QuizzesController < ApplicationController
     @quiz.private ||= false
     @quiz.featured ||= false
     if @quiz.save
+      Tag.parse(@quiz.id, params[:tags]) unless params[:tags].blank?
       redirect_to add_question_path(@quiz)
     else
       render :new

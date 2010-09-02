@@ -12,7 +12,7 @@ class Tag < ActiveRecord::Base
     tags = tag_string.downcase.split /\s*,\s*/
     tags.each do |tag|
       tag_obj = Tag.find_by_text(tag)
-      tag_obj = Tag.create(:text => tag) if tag_obj.nil?
+      tag_obj ||= Tag.create(:text => tag)
       tag_obj.taggings.create :quiz_id => quiz
     end
   end

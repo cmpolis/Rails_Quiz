@@ -28,5 +28,13 @@ class QuizzesControllerTest < ActionController::TestCase
     post :create, :quiz => nil
     assert_template :new
   end
+
+  test "Quiz#create creates taggings for new quiz" do
+    @controller.current_user = Factory(:user) 
+    tags = "this, that, the other thing"
+    assert_difference('Tagging.count', +3) do
+      post :create, {:quiz => Factory.attributes_for(:quiz), :tags => tags}
+    end
+  end
    
 end

@@ -12,6 +12,10 @@
     <td><%= f.label :category, "Category" %></td>
     <td><%= f.collection_select :category_id, Category.all, :id, :title, {:include_blank => 'None'} %></td>
   </tr>
+  <tr>
+    <td> Tags: </td>
+    <td><%= text_field_tag :tags %></td>
+  </tr>
   <% if !@groups.nil? %>
     <tr>
       <td><%=f.label :private, "Private: "%></td>
