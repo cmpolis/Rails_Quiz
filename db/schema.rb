@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100830211402) do
+ActiveRecord::Schema.define(:version => 20100902082028) do
 
   create_table "answer_entries", :force => true do |t|
     t.integer  "quiz_entry_id"
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(:version => 20100830211402) do
     t.datetime "updated_at"
   end
 
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "quiz_id"
+    t.string   "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "group_memberships", :force => true do |t|
     t.integer  "group_id"
     t.integer  "user_id"
@@ -44,6 +52,13 @@ ActiveRecord::Schema.define(:version => 20100830211402) do
     t.integer  "admin_id"
     t.string   "name"
     t.string   "password"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "likes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "quiz_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -72,6 +87,19 @@ ActiveRecord::Schema.define(:version => 20100830211402) do
     t.datetime "updated_at"
     t.boolean  "featured"
     t.integer  "category_id"
+  end
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "quiz_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
