@@ -23,3 +23,26 @@ Factory.define :group do |group|
   group.name           { "Valid group" }
   group.id             { 1 }
 end
+
+Factory.define :tag do |tag|
+  tag.text             { "tag text" }
+  tag.id               { 1 }
+end
+
+Factory.define :tagging do |tagging|
+  tagging.tag_id       { 1 }
+  tagging.quiz_id      { 1 }
+  tagging.id           { 1 }
+end
+
+Factory.define :like do |like|
+  like.user_id         { 1 }
+  like.quiz_id         { 1 }
+  like.id              { 1 }
+end
+
+Factory.define :comment do |comment|
+  comment.user_id      { 1 }
+  comment.quiz_id      { 1 }
+  comment.text         { "Commont on a quiz..." }
+end
