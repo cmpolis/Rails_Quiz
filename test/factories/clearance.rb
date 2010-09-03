@@ -9,7 +9,7 @@ Factory.define :user do |user|
   user.username              { "quizTaker" }
   user.first_name            { "Michael" }
   user.last_name             { "Scott" }
-  user.email_confirmed { true }
+  user.email_confirmed       { true }
 end
 
 Factory.define :user_high_id, :parent => :user do |user|

@@ -3,16 +3,22 @@ class QuizEntriesController < ApplicationController
     if current_user.nil? 
       flash[:notice] = "Must be logged in to take quiz"
       redirect_to root_url
-    elsif params[:single_question]
-      redirect_to take_quiz_question :id => params[:id], :question => 0
     else
-      @quiz = Quiz.find(params[:id])
-      @questions = @quiz.questions # Filter here as neccesary
-      @quiz_entry = QuizEntry.new
-      @user = current_user
+      qe = QuizEntry.find_by_user_id_and_quiz_id current_user.id, params[:id]
+      if !qe.nil?
+        flash[:notice] = "Already taken quiz"
+        redirect_to :action => "show", :id => qe.id
+      elsif params[:single_question]
+        redirect_to take_quiz_question :id => params[:id], :question => 0
+      else
+        @quiz = Quiz.find(params[:id])
+        @questions = @quiz.questions # Filter here as neccesary
+        @quiz_entry = QuizEntry.new
+        @user = current_user
        
-      #if re-rendered because of error, remember which answers are selected
-      @selected = []
+       #if re-rendered because of error, remember which answers are selected
+       @selected = []
+      end
     end
   end
 
