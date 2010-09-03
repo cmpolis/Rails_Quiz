@@ -30,4 +30,9 @@ class Quiz < ActiveRecord::Base
     results.uniq
   end
 
+  # Returns an array of all the scores recieved for a quiz
+  def scores
+    quiz_entries.collect { |qe| qe.score }
+  end
+
 end

@@ -18,4 +18,15 @@ class QuizEntry < ActiveRecord::Base
     quiz.questions.length
   end
 
+  # Returns percentile (float)
+  def score
+    correct.to_f / possible
+  end
+
+  # Returns percentile (0-100), comparing to other quiz takers
+  def percentile
+    scores = quiz.scores.sort
+    ((scores.index(score) + 1) * 100) / scores.length
+  end
+
 end
