@@ -10,4 +10,9 @@
   <br />
 <% end %>
 You scored: <%= @right_answers.length %> / <%= @questions.length %><br />
+Likes: <%= @quiz.likes.length %> <%= button_to "Like", {:controller => "likes", :action => "create", :id => @quiz.id} %><br />
+<% form_for :comment, @comment, :url=>{:controller=>"comments", :action=>:create} do |f| %>
+  <%= f.error_messages %>
+  <%= f.text_area :text %><br />
+<% end %>
 <br />
