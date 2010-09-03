@@ -10,6 +10,7 @@ Factory.define :user do |user|
   user.first_name            { "Michael" }
   user.last_name             { "Scott" }
   user.email_confirmed       { true }
+  user.private               { false }
 end
 
 Factory.define :user_high_id, :parent => :user do |user|

@@ -45,4 +45,10 @@ class AnswerTest < ActiveSupport::TestCase
     assert user.save
   end
 
+  test "Profile must be private or not privat" do
+    user = Factory(:user)
+    user.private = nil
+    assert !user.save
+  end
+
 end
