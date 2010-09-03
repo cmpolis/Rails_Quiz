@@ -22,4 +22,12 @@ class Quiz < ActiveRecord::Base
   validates_presence_of :creator_id
   validates_length_of :title, :in => 6..48
 
+  def self.search query
+    results = []
+    tags = Tag.find(:all, :conditions => ["text like ?", "%#{query.downcase}%"])
+    tags.each { |t| results += t.quizzes }
+    results += Quiz.find(:all, :conditions => ["title like ?", "%#{query.downcase}%"])
+    results.uniq
+  end
+
 end

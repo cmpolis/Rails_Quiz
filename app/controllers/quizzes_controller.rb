@@ -29,6 +29,15 @@ class QuizzesController < ApplicationController
   def edit
   end
 
+  def search
+    if params[:query].empty?
+      flash[:notice] = "Invalid search query"
+      redirect_to request.referer
+    else
+      @quizzes = Quiz.search params[:query]
+    end
+  end
+
   def destroy
     if user_is_admin?
       flash[:notice] = "Quiz deleted #{Quiz.delete params[:id]}"

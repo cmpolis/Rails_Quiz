@@ -1,0 +1,8 @@
+<% title "Search results: #{params[:query]}" %>
+<h3>Search results for <%= params[:query] %></h3>
+<% if @quizzes.empty? %>
+  No matching quizzes <br />
+<% else %>
+  <%= render :partial => "common/quizline", :collection => @quizzes %>
+<% end %>
+<br />
