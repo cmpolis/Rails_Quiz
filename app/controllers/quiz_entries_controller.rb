@@ -97,7 +97,6 @@ class QuizEntriesController < ApplicationController
     @questions = @quiz.questions
     @answers = @quiz_entry.answers
     @right_answers = @answers.find_all_by_right true
-    @comment = @quiz.comments.build
   end
 
 end

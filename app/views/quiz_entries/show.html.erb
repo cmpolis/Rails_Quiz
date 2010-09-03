@@ -11,6 +11,12 @@
 <% end %>
 You scored: <%= @right_answers.length %> / <%= @questions.length %><br />
 Likes: <%= @quiz.likes.length %> <%= button_to "Like", {:controller => "likes", :action => "create", :id => @quiz.id} %><br />
+Comments: <br />
+<% if @quiz.comments.empty? %>
+  Be the first to comment!
+<% else %>
+  <%= render :partial => "common/comment", :collection => @quiz.comments %>
+<% end %>
 <% form_for :comment, :url => {:controller => "comments", :action=>:create} do |f| %>
   <%= f.error_messages %>
   <%= hidden_field :comment, :quiz_id, :value => @quiz.id %>
