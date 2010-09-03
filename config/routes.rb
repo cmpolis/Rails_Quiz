@@ -12,7 +12,8 @@ ActionController::Routing::Routes.draw do |map|
   map.quiz_results '/results/:id', :controller => 'quiz_entries', :action => 'show'  
 
   map.like '/like', :controller => 'likes', :action => 'create'
-
+  
+  map.resources :comments
   map.resources :groups
   map.resources :users
   map.resources :quizzes

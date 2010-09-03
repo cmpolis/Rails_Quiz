@@ -1,8 +1,10 @@
 require 'test_helper'
 
 class QuizEntriesControllerTest < ActionController::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  
+  test "Must be logged in to add comment" do
+    @controller.current_user = nil
+    get :show, :id => 1
   end
+
 end

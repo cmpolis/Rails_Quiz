@@ -11,8 +11,10 @@
 <% end %>
 You scored: <%= @right_answers.length %> / <%= @questions.length %><br />
 Likes: <%= @quiz.likes.length %> <%= button_to "Like", {:controller => "likes", :action => "create", :id => @quiz.id} %><br />
-<% form_for :comment, @comment, :url=>{:controller=>"comments", :action=>:create} do |f| %>
+<% form_for :comment, :url => {:controller => "comments", :action=>:create} do |f| %>
   <%= f.error_messages %>
+  <%= hidden_field :comment, :quiz_id, :value => @quiz.id %>
   <%= f.text_area :text %><br />
+  <%= f.submit "Add comment" %><br />
 <% end %>
 <br />

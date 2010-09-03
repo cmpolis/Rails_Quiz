@@ -90,12 +90,14 @@ class QuizEntriesController < ApplicationController
   end
 
   # Quiz results page
+  # TODO: remove some of these vars, put associations in view....
   def show
     @quiz_entry = QuizEntry.find params[:id]
     @quiz = @quiz_entry.quiz
     @questions = @quiz.questions
     @answers = @quiz_entry.answers
     @right_answers = @answers.find_all_by_right true
+    @comment = @quiz.comments.build
   end
 
 end
