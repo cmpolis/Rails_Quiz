@@ -9,6 +9,10 @@
     <td><%= f.text_field :title %></td>
   </tr>
   <tr>
+    <td><%= f.label :description, "Description:"%></td>
+    <td><%= f.text_area :description %></td>
+  </tr>
+  <tr>
     <td><%= f.label :category, "Category" %></td>
     <td><%= f.collection_select :category_id, Category.all, :id, :title, {:include_blank => 'None'} %></td>
   </tr>
