@@ -27,6 +27,7 @@ class Quiz < ActiveRecord::Base
     tags = Tag.find(:all, :conditions => ["text like ?", "%#{query.downcase}%"])
     tags.each { |t| results += t.quizzes }
     results += Quiz.find(:all, :conditions => ["title like ?", "%#{query.downcase}%"])
+    results += Quiz.find(:all, :conditions => ["description like ?", "%#{query.downcase}%"])
     results.uniq
   end
 
