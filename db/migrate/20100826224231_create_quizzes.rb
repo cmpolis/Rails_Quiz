@@ -5,6 +5,7 @@ class CreateQuizzes < ActiveRecord::Migration
       t.boolean :private
       t.integer :creator_id
       t.string :title
+      t.string :description
 
       t.timestamps
     end

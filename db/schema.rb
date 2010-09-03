@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20100902082028) do
     t.boolean  "private"
     t.integer  "creator_id"
     t.string   "title"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "featured"
@@ -114,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20100902082028) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "username"
+    t.boolean  "private"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
