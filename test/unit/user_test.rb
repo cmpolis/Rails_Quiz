@@ -21,31 +21,7 @@ class AnswerTest < ActiveSupport::TestCase
     assert user.save
   end
 
-  test "First name should be between 2 and 16 characters" do
-    user = Factory(:user)
-    user.first_name = nil
-    assert !user.save
-    user.first_name = "a"
-    assert !user.save
-    user.first_name = "a" * 17
-    assert !user.save
-    user.first_name = "John"
-    assert user.save
-  end
-
-  test "Last name should be between 2 and 16 characters" do
-    user = Factory(:user)
-    user.last_name = nil
-    assert !user.save
-    user.last_name = "b"
-    assert !user.save
-    user.last_name = "b" * 17
-    assert !user.save
-    user.last_name = "Smith"
-    assert user.save
-  end
-
-  test "Profile must be private or not privat" do
+  test "Profile must be private or not private" do
     user = Factory(:user)
     user.private = nil
     assert !user.save

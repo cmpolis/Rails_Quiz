@@ -7,8 +7,9 @@ Factory.define :user do |user|
   user.password              { "password" }
   user.password_confirmation { "password" }
   user.username              { "quizTaker" }
-  user.first_name            { "Michael" }
-  user.last_name             { "Scott" }
+  user.full_name             { "John Doe" }
+  user.bio                   { "Im a web dev hobo" }
+  user.location              { "Bay area, CA" }
   user.email_confirmed       { true }
   user.private               { false }
 end

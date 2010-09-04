@@ -112,8 +112,9 @@ ActiveRecord::Schema.define(:version => 20100902082028) do
     t.boolean  "email_confirmed",                   :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "full_name"
+    t.string   "bio"
+    t.string   "location"
     t.string   "username"
     t.boolean  "private"
   end
