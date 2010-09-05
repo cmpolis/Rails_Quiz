@@ -6,13 +6,96 @@
   
 <body>
   <%= render :partial => "common/header" %>
+  
+<div id="content">
   <div id="flash">
     <% flash.each do |key, value| -%>
       <div id="flash_<%= key %>"><%=h value %></div>
     <% end -%>
   </div>
-
+	   <div id="main">
   <%= yield %>
+           </div>
+  <div id="sidebar">
+
+      	<div class="about-me">
+
+         	<h3>About Me</h3>
+		      <p>
+		      <a href="index.html"><img src="images/gravatar.jpg" width="40" height="40" alt="firefox" class="float-left" /></a>
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum.
+			   Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu
+			   posuere nunc justo tempus leo <a href="index.html">Learn more...</a>
+				</p>
+
+         </div>
+
+			<div class="sidemenu">
+
+				<h3>Sidebar Menu</h3>
+            <ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="index.html#TemplateInfo">TemplateInfo</a></li>
+					<li><a href="style.html">Style Demo</a></li>
+					<li><a href="blog.html">Blog</a></li>
+					<li><a href="archives.html">Archives</a></li>
+					<li><a href="http://www.dreamtemplate.com" title="Web Templates">Web Templates</a></li>
+				</ul>
+
+			</div>
+
+			<div class="sidemenu">
+
+				<h3>Sponsors</h3>
+            <ul>
+					<li><a href="http://www.dreamtemplate.com" title="Website Templates">DreamTemplate <br />
+	            	<span>Over 6,000+ Premium Web Templates</span></a>
+	            </li>
+					<li><a href="http://www.themelayouts.com" title="WordPress Themes">ThemeLayouts <br />
+	            	<span>Premium WordPress &amp; Joomla Themes</span></a>
+	            </li>
+					<li><a href="http://www.imhosted.com" title="Website Hosting">ImHosted.com <br />
+	            	<span>Affordable Web Hosting Provider</span></a>
+	            </li>
+					<li><a href="http://www.dreamstock.com" title="Stock Photos">DreamStock <br />
+	            	<span>Download Amazing Stock Photos</span></a>
+	            </li>
+					<li><a href="http://www.evrsoft.com" title="Website Builder">Evrsoft <br />
+	            	<span>Website Builder Software &amp; Tools</span></a>
+	            </li>
+					<li><a href="http://www.webhostingwp.com" title="Web Hosting">Web Hosting <br />
+	            	<span>Top 10 Hosting Reviews</span></a>
+	            </li>
+				</ul>
+
+			</div>
+
+         <div class="popular">
+
+				<h3>Most Popular</h3>
+				<ul>
+			   	<li><a href="index.html">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</a>
+						<br /><span>Posted on December 22, 2010</span>
+					</li>
+               <li><a href="index.html">Cras fringilla magna. Phasellus suscipit.</a>
+						<br /><span>Posted on December 20, 2010</span>
+					</li>
+               <li><a href="index.html">Morbi tincidunt, orci ac convallis aliquam.</a>
+						<br /><span>Posted on December 15, 2010</span>
+					</li>
+               <li><a href="index.html">Ipsum dolor sit amet, consectetuer adipiscing elit.</a>
+						<br /><span>Posted on December 14, 2010</span>
+					</li>
+               <li><a href="index.html">Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem</a>
+						<br /><span>Posted on December 12, 2010</span>
+					</li>
+				</ul>
+
+			</div>
+
+      <!-- /sidebar -->
+		</div>
+</div>
   <%= render :partial => "common/footer" %>
 </body>
 </html>
