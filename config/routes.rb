@@ -14,6 +14,8 @@ ActionController::Routing::Routes.draw do |map|
   map.like '/like', :controller => 'likes', :action => 'create'
   map.search '/search', :controller => 'quizzes', :action => 'search'
   
+  map.random '/random', :controller => 'quizzes', :action => 'random'
+
   map.resources :comments
   map.resources :groups
   map.resources :users

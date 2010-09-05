@@ -1,11 +1,24 @@
-<h1>Rails Quiz</h1>
-<nav>
-  <%= link_to "Home", root_url %> |
-  <%= link_to "Sign Up", sign_up_path %> |
-  <%= link_to "Sign In", sign_in_path %> |
-  <%= link_to "Sign Out", sign_out_path %> |
-  <%= link_to "Groups", groups_path %> |
-  <%= link_to "Make a quiz", new_quiz_path %> |
-  <%= link_to "Make a group", new_group_path %>
-</nav>
-</ul>
+<div id="header-wrap"><div id="header">
+
+	<a name="top"></a>
+
+	<h1 id="logo-text"><a href="index.html" title="">Rails Quiz</a></h1>
+	<p id="slogan">You know more than you think you know, just as you know less than you want to know.</p>
+
+	<nav>
+		<ul>
+                  <li><%= link_to "Home", root_url %></li>
+		  <li><%= link_to "Browse", root_url %></li>
+		  <li><%= link_to "Create", new_quiz_path %></li>
+		  <li><%= link_to "Random", random_path %></li>
+		  <li><%= link_to "Register", sign_up_path %></li>
+		</ul>
+	</nav>
+<% form_tag search_path, :method => :get, :id => "quick-search" do %>
+    <fieldset class="search">
+      <label for="qsearch">Search:</label>
+      <%= text_field_tag :query, "Search..", :class=>"tbox", :id => "qsearch" %>
+      <%= submit_tag "Search", :name => nil, :class => "btn", :title =>"Submit Search" %>
+    </fieldset>
+<% end %>
+</div></div>
