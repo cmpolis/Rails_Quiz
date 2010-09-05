@@ -188,14 +188,14 @@ input.button {
   width: 100%;
   background: url(../images/header-bg.jpg) repeat-x;
 }
-header {
+#header {
   position: relative;
   margin: 0 auto;
   width: 1000px;
 }
 
-header h1#logo-text { margin: 0; padding: 0; }
-header h1#logo-text a {
+#header h1#logo-text { margin: 0; padding: 0; }
+#header h1#logo-text a {
 	position: absolute;
 	margin: 0; padding: 0 5px 0 0;
 	font: bold 55px 'Trebuchet MS', 'Helvetica Neue', Arial, Sans-Serif;
@@ -206,7 +206,7 @@ header h1#logo-text a {
   	/* change the values of top and left to adjust the position of the logo*/
 	top: 82px; left: 25px;
 }
-header p#slogan {
+#header p#slogan {
 	position: absolute;
 	margin: 0; padding:  0 5px 0 0;
 	font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
@@ -222,7 +222,7 @@ header p#slogan {
 }
 
 /* RSS */
-header p#rss {
+#header p#rss {
   position: absolute;
   width: 175px;
   height: 50px;
@@ -230,7 +230,7 @@ header p#rss {
   padding: 0; margin: 0;
   text-align: right;
 }
-header p#rss a {
+#header p#rss a {
   background: transparent url(../images/rss.gif) no-repeat left center;
   color: #baa7a7;
   height: 30px;
@@ -239,7 +239,7 @@ header p#rss a {
   padding: 10px 0 0 30px;
   display: block;
 }
-header p#rss a:hover { color: #fff; }
+#header p#rss a:hover { color: #fff; }
 
 /* Quick Search */
 form#quick-search {
@@ -283,35 +283,35 @@ fieldset.search {
 }
 
 /*  navigation  */
-header nav {
+#header nav {
 	position: absolute;
 	left: 15px;	top: 25px;
 	margin: 0; padding: 0;
 	width: 750px;
 }
-header nav ul {
+#header nav ul {
 	float: left;	
 	list-style: none;
 	margin: 0; padding: 0;
 	height: 45px;
 }
-header nav ul li {
+#header nav ul li {
 	float: left;
 	margin: 0; padding: 0;			
 }
-header nav ul li a {
+#header nav ul li a {
 	float:left;
 	margin: 0;
 	padding: 0 15px 29px 15px;
 	color: #baa7a7;
 	font: bold 12px 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
 }
-header nav ul li a:hover,
-header nav ul li a:active {
+#header nav ul li a:hover,
+#header nav ul li a:active {
 	border: none;
 	color: #fff;
 }
-header nav ul li#current a {
+#header nav ul li#current a {
 	background: transparent url(../images/current.jpg) no-repeat center bottom;
 	color: #fff;
 }
