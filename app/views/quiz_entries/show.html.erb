@@ -1,4 +1,6 @@
 <% title "Results for #{@quiz.title}" %>
+
+<div class="right">
 <h3>Results for quiz: <%= @quiz.title %></h3><br />
 <% @questions.each do |question| %>
   <b><%= question.text %></b><br />
@@ -25,4 +27,5 @@ Comments: <br />
   <%= f.text_area :text %><br />
   <%= f.submit "Add comment" %><br />
 <% end %>
-<br />
+<br /></div>
+<%= render :partial=>"common/quiz_info" %>
