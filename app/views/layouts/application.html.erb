@@ -6,7 +6,8 @@
   
 <body>
   <%= render :partial => "common/header" %>
-  
+
+  <div id="content-wrap" class="clear" >
 <div id="content">
   <div id="flash">
     <% flash.each do |key, value| -%>
@@ -14,11 +15,15 @@
     <% end -%>
   </div>
 	   <div id="main">
+  <div class="post">
   <%= yield %>
-  
+  </div>
            </div>
+           
   <%= render :partial => "common/sidebar" %>
 </div>
+</div>
+  
   <%= render :partial => "common/footer" %>
 </body>
 </html>
