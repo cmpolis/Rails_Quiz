@@ -29,6 +29,11 @@ class QuizzesController < ApplicationController
   def edit
   end
 
+  def random
+    # assumes all quizzes are valid, will need to be updatd!
+    redirect_to take_quiz_path(rand(Quiz.count)+1)
+  end
+
   def search
     if params[:query].empty?
       flash[:notice] = "Invalid search query"
