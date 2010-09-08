@@ -1,22 +1,11 @@
 <h3>Login</h3>
-<p>
-<% form_for :session, :url => session_path do |form| %>
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-    <br />
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  
-    <%= form.submit "Sign in", :disable_with => "Please wait..." %>
- 
-<% end %>
 
-<ul>
-  <li>
-    <%= link_to "Sign up", sign_up_path %>
-  </li>
-  <li>
-    <%= link_to "Forgot password?", new_password_path %>
-  </li>
-</ul>
-</p>
+<% form_for :session, :url => session_path, :html => {:id => "side_login"} do |form| %>
+  <%= form.text_field :email, :size => 36, :placeholder => "email" %>
+  <br />
+  <%= form.password_field :password, :size => 36, :placeholder => "password" %>
+  <br />
+  <%= form.submit "Sign in", :disable_with => "Please wait..." %>
+  or <b><%= link_to "Register", sign_up_path %></b>
+
+<% end %>

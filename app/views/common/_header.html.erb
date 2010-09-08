@@ -1,24 +1,27 @@
 <div id="header-wrap"><div id="header">
+  <a name="top"></a>
+  <h1 id="logo-text"><%= link_to "Rails Quiz", root_url %></h1>
+  <p id="slogan">You know more than you think you know, just as you know less than you want to know.</p>
+	
+  <nav>
+    <ul>
+      <li><%= link_to "Home", root_url %></li>
+      <li><%= link_to "Browse", root_url %></li>
+      <li><%= link_to "Create", new_quiz_path %></li>
+      <li><%= link_to "Random", random_path %></li>
+      <% unless signed_in? %>
+        <li><%= link_to "Register", sign_up_path %></li>
+      <% else %>
+        <li><%= link_to "Profile", current_user %></li>
+      <% end %>
+    </ul>
+  </nav>
 
-	<a name="top"></a>
-
-	<h1 id="logo-text"><a href="index.html" title="">Rails Quiz</a></h1>
-	<p id="slogan">You know more than you think you know, just as you know less than you want to know.</p>
-
-	<nav>
-		<ul>
-                  <li><%= link_to "Home", root_url %></li>
-		  <li><%= link_to "Browse", root_url %></li>
-		  <li><%= link_to "Create", new_quiz_path %></li>
-		  <li><%= link_to "Random", random_path %></li>
-		  <li><%= link_to "Register", sign_up_path %></li>
-		</ul>
-	</nav>
-<% form_tag search_path, :method => :get, :id => "quick-search" do %>
+  <% form_tag search_path, :method => :get, :id => "quick-search" do %>
     <fieldset class="search">
       <label for="qsearch">Search:</label>
-      <%= text_field_tag :query, "Search..", :class=>"tbox", :id => "qsearch" %>
+      <%= text_field_tag :query, nil, :class=>"tbox", :id => "qsearch", :placeholder => "Search quizzes" %>
       <%= submit_tag "Search", :name => nil, :class => "btn", :title =>"Submit Search" %>
     </fieldset>
-<% end %>
+  <% end %>
 </div></div>
