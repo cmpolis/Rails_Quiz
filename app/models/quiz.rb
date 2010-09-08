@@ -36,4 +36,15 @@ class Quiz < ActiveRecord::Base
     quiz_entries.collect { |qe| qe.score }
   end
 
+  def avg_score
+    scores.inject(0.0) { |sum, score| sum + score } / (scores.count * 0.01)
+  end
+
+  def times_taken
+    quiz_entries.count
+  end
+
+  def create_time
+    Time.at(created_at.to_i).strftime("%m/%d/%Y")
+  end
 end

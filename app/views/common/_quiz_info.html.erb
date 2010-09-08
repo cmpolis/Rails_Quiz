@@ -1,22 +1,20 @@
 <div class="left">
+  <div class="post-meta">
+    <h4>quiz info</h4>
+  
+    <ul>
+      <li class="user"><%= link_to quiz.creator, quiz.creator %></li>
+      <li class="time"><%= quiz.create_time %></li>
+      <li class="comment"><a href="#"><%= quiz.comments.count %> comments</a></li>
+      <li>Taken <%= quiz.times_taken %> times.</li>
+      <li>Avg score: <%= quiz.avg_score %></li>
+    </ul>
+  </div>
 
-
-               <div class="post-meta">
-               	<h4>quiz info</h4>
-                  <ul>
-                  	<li class="user"><a href="#">Erwin</a></li>
-                     <li class="time"><a href="#">12:30 PM</a></li>
-                     <li class="comment"><a href="#">10 Comments</a></li>
-                     <li class="permalink"><a href="#">Permalink</a></li>
-                  </ul>
-					</div>
-
-               <div class="post-meta">
-               	<h4>tags</h4>
-						<ul class="tags">
-			         	<li><a href="index.html" rel="tag">Clean</a></li>
-			            <li><a href="index.html" rel="tag">Blog</a></li>
-			            <li><a href="index.html" rel="tag">Minimal</a></li>
-			         </ul>
-               </div>
+  <div class="post-meta">
+    <h4>tags</h4>
+    <ul class="tags">		         
+      <%= render :partial => "common/tag_list", :collection => quiz.tags %>
+    </ul>
+  </div>
 </div>

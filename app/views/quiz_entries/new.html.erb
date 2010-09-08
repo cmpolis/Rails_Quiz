@@ -19,4 +19,4 @@ taken <%= @quiz.quiz_entries.length %> times<br /><br />
 <% end %>
 <br />
 </div>
-<%= render :partial=>"common/quiz_info" %>
+<%= render :partial=>"common/quiz_info", :locals => {:quiz => @quiz} %>

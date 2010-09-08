@@ -28,4 +28,4 @@ Comments: <br />
   <%= f.submit "Add comment" %><br />
 <% end %>
 <br /></div>
-<%= render :partial=>"common/quiz_info" %>
+<%= render :partial=>"common/quiz_info", :locals => { :quiz => @quiz } %>
