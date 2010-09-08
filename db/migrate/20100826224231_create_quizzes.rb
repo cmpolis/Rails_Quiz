@@ -1,8 +1,9 @@
 class CreateQuizzes < ActiveRecord::Migration
   def self.up
     create_table :quizzes do |t|
-      t.integer :group_id
-      t.boolean :private
+      t.string :type
+      #t.integer :group_id
+      #t.boolean :private
       t.integer :creator_id
       t.string :title
       t.string :description

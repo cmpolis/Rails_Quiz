@@ -1,5 +1,7 @@
 class Quiz < ActiveRecord::Base
 
+  QUIZ_TYPES = ["MultipleChoice","Matching","List","ShortAnswer"]
+  
   belongs_to :creator, :class_name => "User"
   belongs_to :group
   belongs_to :category
@@ -17,8 +19,8 @@ class Quiz < ActiveRecord::Base
   has_many :likes
 
   validates_inclusion_of :featured, :in => [true, false]
-  validates_inclusion_of :private, :in => [true, false]
-  validates_presence_of :group_id, :if => Proc.new {|quiz| quiz.private == true}
+  # validates_inclusion_of :private, :in => [true, false]
+  # validates_presence_of :group_id, :if => Proc.new {|quiz| quiz.private == true}
   validates_presence_of :creator_id
   validates_length_of :title, :in => 6..48
 
@@ -29,6 +31,10 @@ class Quiz < ActiveRecord::Base
     results += Quiz.find(:all, :conditions => ["title like ?", "%#{query.downcase}%"])
     results += Quiz.find(:all, :conditions => ["description like ?", "%#{query.downcase}%"])
     results.uniq
+  end
+
+  def self.types
+    QUIZ_TYPES
   end
 
   # Returns an array of all the scores recieved for a quiz

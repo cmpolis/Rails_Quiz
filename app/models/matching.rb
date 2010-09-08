@@ -1,0 +1,2 @@
+class Matching < Quiz
+end

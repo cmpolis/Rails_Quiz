@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100902082028) do
+ActiveRecord::Schema.define(:version => 20100908231328) do
 
   create_table "answer_entries", :force => true do |t|
     t.integer  "quiz_entry_id"
@@ -63,8 +63,22 @@ ActiveRecord::Schema.define(:version => 20100902082028) do
     t.datetime "updated_at"
   end
 
+  create_table "lists", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "matchings", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "multiple_choices", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "questions", :force => true do |t|
-    t.integer  "type"
     t.integer  "quiz_id"
     t.string   "text"
     t.datetime "created_at"
@@ -79,8 +93,7 @@ ActiveRecord::Schema.define(:version => 20100902082028) do
   end
 
   create_table "quizzes", :force => true do |t|
-    t.integer  "group_id"
-    t.boolean  "private"
+    t.string   "type"
     t.integer  "creator_id"
     t.string   "title"
     t.string   "description"
@@ -88,6 +101,11 @@ ActiveRecord::Schema.define(:version => 20100902082028) do
     t.datetime "updated_at"
     t.boolean  "featured"
     t.integer  "category_id"
+  end
+
+  create_table "short_answers", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "taggings", :force => true do |t|

@@ -1,0 +1,2 @@
+class MultipleChoice < Quiz
+end
