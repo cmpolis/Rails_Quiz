@@ -21,6 +21,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resources :quizzes
   map.resources :questions
+  map.resources :categories
   map.resources :tags, :only => :show
   
   Clearance::Routes.draw(map)

@@ -7,4 +7,8 @@ class Category < ActiveRecord::Base
 
   has_many :quizzes
 
+  def to_s
+    title
+  end
+
 end

@@ -1,5 +1,9 @@
 class CategoriesController < ApplicationController
-  
+
+  def index
+    @categories = Category.all
+  end  
+
   def create
     if user_is_admin?
       @category = Category.new params[:category]
@@ -11,10 +15,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
-  
-    # clean up... Record.find(32) throws an exception if not found
-   #             ...but Record.find_by_id(32) returns nil
-    if params[:id].nil? || (@category = Category.find_by_id(params[:id])).nil?
+   @category = Category.find_by_id params[:id]
+   if @category.nil?
       redirect_to root_url
     else
       render :show
