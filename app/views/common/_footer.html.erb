@@ -4,18 +4,10 @@
     <h3>Updates</h3>
 
       <ul class="subscribe-stuff">
-      	<li><a title="RSS" href="index.html" rel="nofollow">
-          <img alt="RSS" title="RSS" src="images/social_rss.png" /></a>
-        </li>
-      	<li><a title="Facebook" href="index.html" rel="nofollow">
-          <img alt="Facebook" title="Facebook" src="images/social_facebook.png" /></a>
-	</li>
-        <li><a title="Twitter" href="index.html" rel="nofollow">
-          <img alt="Twitter" title="Twitter" src="images/social_twitter.png" /></a>
-        </li>
-        <li><a title="E-mail this story to a friend!" href="index.html" rel="nofollow">
-          <img alt="E-mail this story to a friend!" title="E-mail this story to a friend!" src="images/social_email.png" /></a>
-        </li>
+      	<li><%= link_to image_tag("social_rss.png", :title=>"RSS", :alt => "RSS"), "#" %></li>
+      	<li><%= link_to image_tag("social_facebook.png", :title=>"Facebook", :alt => "Facebook"), "#" %></li>
+        <li><%= link_to image_tag("social_twitter.png", :title=>"Twitter", :alt=>"Twitter"), "#" %></li>
+        <li><%= link_to image_tag("social_email.png", :title=>"EMail", :alt=>"EMail"), "#" %></li>
       </ul>
 
       <p>Connect with RoR quiz via
