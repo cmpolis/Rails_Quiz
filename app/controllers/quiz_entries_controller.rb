@@ -1,32 +1,27 @@
 class QuizEntriesController < ApplicationController
   def new
-    if current_user.nil? 
+    if !signed_in? 
       flash[:notice] = "Must be logged in to take quiz"
       redirect_to root_url
     else
-      qe = QuizEntry.find_by_user_id_and_quiz_id current_user.id, params[:id]
+      qe = QuizEntry.find_by_user_id_and_quiz_id(current_user.id, params[:id])
       if !qe.nil?
         flash[:notice] = "Already taken quiz"
-        redirect_to :action => "show", :id => qe.id
+        redirect_to quiz_results_path(qe.id)
       elsif params[:single_question]
         redirect_to take_quiz_question :id => params[:id], :question => 0
       else
         @quiz = Quiz.find(params[:id])
-        @questions = @quiz.questions # Filter here as neccesary
         @quiz_entry = QuizEntry.new
-        @user = current_user
        
-       #if re-rendered because of error, remember which answers are selected
-       @selected = []
+        @selected = []
       end
     end
   end
 
   def create
     @quiz_entry = QuizEntry.new params[:quiz_entry]
-   
-    # build errors for @quiz_entry
-    @quiz_entry.valid?
+    @quiz_entry.valid?        # Build errors
   
     params[:answers] ||= []   
     params[:answers].each do |answer|
@@ -46,16 +41,15 @@ class QuizEntriesController < ApplicationController
       redirect_to quiz_results_path(@quiz_entry)
     else
       flash[:notice] = "Quiz submission unsuccesful"
-      @user = current_user
   
       # remember which answers were selected
       @selected = params[:answers]
       @quiz = @quiz_entry.quiz
-      @questions = @quiz.questions
       render :new
     end
   end
 
+  # DEPRICIATED, ALL QUIZZES DISPLAYED WITH ALL QUESTIONS
   def single_question
     if current_user.nil?
       flash[:notice] = "Must be logged in to tak quiz"
@@ -68,12 +62,10 @@ class QuizEntriesController < ApplicationController
     end
   end
  
+  # DEPRICIATED, ALL QUIZZES DISPLAYED WITH ALL QUESTIONS
   def proccess_question
-
-    #TODO: CLEAN THIS UP!!
-
-    @question_submit = params[:question_submit] # contains quiz_entry(id), question
-    # in params[] => answer[], question_submit, question
+    @question_submit = params[:question_submit] 
+    
     if params[:answer].length != 1
       @question_submit.errors.add_to_base "Must select one answer"
       render :single_question
@@ -96,13 +88,9 @@ class QuizEntriesController < ApplicationController
   end
 
   # Quiz results page
-  # TODO: remove some of these vars, put associations in view....
   def show
     @quiz_entry = QuizEntry.find params[:id]
     @quiz = @quiz_entry.quiz
-    @questions = @quiz.questions
-    @answers = @quiz_entry.answers
-    @right_answers = @answers.find_all_by_right true
   end
 
 end

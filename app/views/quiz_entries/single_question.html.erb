@@ -1,6 +1,6 @@
 <% title "#{@quiz_entry.quiz.title} - #{@question.text}" %>
 
-<h3><%= @quiz.title %></h3>
+<h3><%= @quiz_entry.title %></h3>
 <b><%= @question.text %></b><br />
 <% form_for :question_submit, @question_submit, :url => {:action => "proccess_question"} do |f| %>
   <%= f.error_messages %>

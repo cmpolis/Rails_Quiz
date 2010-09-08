@@ -47,4 +47,8 @@ class Quiz < ActiveRecord::Base
   def create_time
     Time.at(created_at.to_i).strftime("%m/%d/%Y")
   end
+
+  def like_count
+    likes.count
+  end
 end
