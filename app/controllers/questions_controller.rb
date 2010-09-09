@@ -9,13 +9,17 @@ class QuestionsController < ApplicationController
       redirect_to root_url
       flash[:notice] = "Must be quiz creator to add a question"
     else
-      @question = @quiz.questions.build
-      (1..4).each { @question.answers.build }
+      @question = @quiz.build_question
+      render "#{@quiz.type.downcase}_new"
     end
   end
 
   def create
-    @question = Question.new(params[:question])  
+=begin
+NOTE: moved question validation logic to each quiz type class
+      allows for simpler controller logic and multiple question types
+
+@question = Question.new(params[:question])  
     @question.valid?  # generate errors for questions
 
     right_answers = @question.answers.find_all { |ans| ans.right }    
@@ -29,6 +33,17 @@ class QuestionsController < ApplicationController
     else
       @quiz = @question.quiz
       render :new
+    end
+=end
+    @quiz = Quiz.find(params[:question][:quiz_id])
+    @question = @quiz.validate_question params
+    if @question.errors.empty?
+      @question.save
+      flash[:notice] = "Question added"
+      redirect_to add_question_path(@quiz)
+    else
+      #@question = @quiz.build_question
+      render "#{@quiz.type.downcase}_new"
     end
   end
 
