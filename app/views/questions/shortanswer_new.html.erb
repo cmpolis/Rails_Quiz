@@ -1,0 +1,22 @@
+<% title "Add question to #{@quiz.title}" %>
+
+<h3>Add question to <%= @quiz.title %></h3>
+<% form_for :question, @question, :url => {:action => :create} do |f| %>
+<%= f.error_messages %>
+
+
+    <%= f.label :text, "Question: "%>
+    <%= f.text_field :text %>
+    <%= f.hidden_field(:quiz_id, :value => @quiz.id) %>
+
+  <% f.fields_for :answers do |answer_fields| %>
+
+      Answer:
+      <%= answer_fields.text_field :text %>
+
+  <% end %>
+  <%= f.submit "Add question" %>
+<% end %>
+
+
+<br />

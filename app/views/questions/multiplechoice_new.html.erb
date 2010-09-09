@@ -7,7 +7,7 @@
   <tr>
     <td><%= f.label :text, "Question: "%></td>
     <td><%= f.text_field :text %></td>
-    <%= f.hidden_field(:quiz_id, :value => @quiz.id) { |unusedlocal|  } %>
+    <%= f.hidden_field(:quiz_id, :value => @quiz.id) %>
   </tr>
   <% f.fields_for :answers do |answer_fields| %>
     <tr>
@@ -15,7 +15,7 @@
       <td><%= answer_fields.text_field :text %></td>
       <td>Right? </td>
       <td><%= answer_fields.check_box :right %></td>
-    <tr>
+    </tr>
   <% end %>
 <% end %>
 </table>

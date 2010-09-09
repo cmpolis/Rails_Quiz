@@ -7,7 +7,7 @@
   <tr>
     <td><%= f.label :text, "List: "%>
     <%= f.text_field :text %></td>
-    <%= f.hidden_field(:quiz_id, :value => @quiz.id) { |unusedlocal|  } %>
+    <%= f.hidden_field(:quiz_id, :value => @quiz.id)  %>
   </tr>
   <% f.fields_for :answers do |answer_fields| %>
     <tr>
