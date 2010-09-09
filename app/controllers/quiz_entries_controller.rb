@@ -13,13 +13,16 @@ class QuizEntriesController < ApplicationController
       else
         @quiz = Quiz.find(params[:id])
         @quiz_entry = QuizEntry.new
-       
-        @selected = []
+
+        @selected = [] # Used to persist selected answers
+        render "#{@quiz.type.downcase}_new"
       end
     end
   end
 
   def create
+=begin
+    # QUIZ ENTRY VALIDATION MOVED TO QUIZ MODEL
     @quiz_entry = QuizEntry.new params[:quiz_entry]
     @quiz_entry.valid?        # Build errors
   
@@ -35,6 +38,10 @@ class QuizEntriesController < ApplicationController
         @quiz_entry.errors.add_to_base "More than one answer for: #{question.text}"
       end
     end
+=end
+
+    @quiz = Quiz.find(params[:quiz_entry][:quiz_id])
+    @quiz_entry = @quiz.validate_entry params
 
     if @quiz_entry.errors.empty?
       @quiz_entry.save
@@ -44,11 +51,12 @@ class QuizEntriesController < ApplicationController
   
       # remember which answers were selected
       @selected = params[:answers]
-      @quiz = @quiz_entry.quiz
-      render :new
+      #@quiz = @quiz_entry.quiz
+      render "#{@quiz.type.downcase}_new"
     end
   end
 
+=begin
   # DEPRICIATED, ALL QUIZZES DISPLAYED WITH ALL QUESTIONS
   def single_question
     if current_user.nil?
@@ -86,6 +94,7 @@ class QuizEntriesController < ApplicationController
     end
       
   end
+=end
 
   # Quiz results page
   def show

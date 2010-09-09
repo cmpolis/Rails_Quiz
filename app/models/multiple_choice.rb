@@ -6,7 +6,7 @@ class MultipleChoice < Quiz
     question
   end
 
-  # Tries to save question(s) from params, returns true if saved
+  # Builds question object from params
   def validate_question params
     @question = Question.new(params[:question])
     @question.valid?  # generate errors for question
@@ -16,6 +16,35 @@ class MultipleChoice < Quiz
            if right_answers.length != 1
 
     @question
+  end
+
+  def possible
+    questions.count
+  end
+
+  def correct answers
+    answers.select { |ans| ans.right }.count
+  end
+  
+  # Builds quiz_entry object from params
+  def validate_entry params
+    @quiz_entry = QuizEntry.new params[:quiz_entry]
+    @quiz_entry.valid?        # Build errors
+
+    params[:answers] ||= []
+    params[:answers].each do |answer|
+      @quiz_entry.answer_entries.build :answer_id => answer
+    end
+
+    @quiz_entry.quiz.questions.each do |question|
+      #if question.answers.find_all_by_id(params[:answers]).length == 0
+      #  @quiz_entry.errors.add_to_base "No answer for: #{question.text}"
+      if question.answers.find_all_by_id(params[:answers]).length > 1
+        @quiz_entry.errors.add_to_base "More than one answer for: #{question.text}"
+      end
+    end
+
+    @quiz_entry
   end
 
 end

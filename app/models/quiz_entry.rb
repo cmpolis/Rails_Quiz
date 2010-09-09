@@ -11,11 +11,11 @@ class QuizEntry < ActiveRecord::Base
  
   # Returns number of correct answers
   def correct
-    (answers.find_all_by_right(true)).length
+    quiz.correct answers
   end
    
   def possible
-    quiz.questions.length
+    quiz.possible
   end
 
   # Returns percentile (float)

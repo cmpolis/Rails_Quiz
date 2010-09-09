@@ -6,6 +6,10 @@ class ShortAnswer < Quiz
     question
   end
 
+  def possibl
+    questions.count
+  end
+
   # Tries to save question(s) from params, returns true if saved
   def validate_question params
     @question = Question.new(params[:question])
