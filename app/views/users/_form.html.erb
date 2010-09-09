@@ -1,31 +1,30 @@
 
 <%= form.error_messages %>
-<div class="text_field">
   <%= form.label :email %>
   <%= form.text_field :email %>
-</div>
-<div class="text_field">
+<br />
+
   <%= form.label :username %>
   <%= form.text_field :username %>
-</div>
-<div class="text_field">
-  <%= form.label :full_name, "Full name" %>
-  <%= form.text_field :full_name %>
-</div>
-<div class="text_field">
+<br />
+
   <%= form.label :location %>
-  <%= form.text_field :location %>
-</div>
-<div>
+  <%= form.text_field :location, :placeholder => "optional" %>
+
+<br />
+
+  <%= form.label :bio %>
+  <%= form.text_field :bio, :placeholder => "optional" %>
+
+<br />
   <%= form.label :private, "Prviate profile" %>
   <%= form.check_box :private %>
-</div>
-<div class="password_field">
+
+<br />
   <%= form.label :password %>
   <%= form.password_field :password %>
-</div>
-<div class="password_field">
+
+<br />
   <%= form.label :password_confirmation, "Confirm password" %>
   <%= form.password_field :password_confirmation %>
-</div>
-
+<br />

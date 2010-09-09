@@ -1,6 +1,7 @@
 <h3>Welcome <%= current_user.username %></h3>
 <p>
   <%= link_to image_tag("gravatar.jpg", :width=>"40", :height=>"40", :class=>"float-left"), current_user %></a>
-  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  
-  <%= link_to "Logout", sign_out_path %>
+<b>Loc: </b><%= current_user.location %><br />
+<b>Bio: </b><%= current_user.bio %><br />
+  <%= link_to "Profile", current_user %> | <%= link_to "Logout", sign_out_path %>
 </p>

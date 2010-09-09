@@ -6,7 +6,7 @@
   <nav>
     <ul>
       <li><%= link_to "Home", root_url %></li>
-      <li><%= link_to "Browse", root_url %></li>
+      <li><%= link_to "Browse", categories_url %></li>
       <li><%= link_to "Create", new_quiz_path %></li>
       <li><%= link_to "Random", random_path %></li>
       <% unless signed_in? %>

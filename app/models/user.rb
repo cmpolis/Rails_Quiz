@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
   has_many :comments
 
   validates_length_of :username, :in => 4..16
-  validates_length_of :full_name, :in => 4..16
   validates_inclusion_of :private, :in => [true,false]
 
   def to_s

@@ -14,17 +14,22 @@
 You scored: <%= @quiz_entry.correct %> / <%= @quiz_entry.possible %><br />
 Percentile: <%= @quiz_entry.percentile %><br /><br />
 
-Likes: <%= @quiz.like_count %> <%= button_to "Like", {:controller => "likes", :action => "create", :id => @quiz.id} %>
+Likes: <%= @quiz.like_count %>
+<% form_tag like_path(:id => @quiz.id), :class => "like_form" do %>
+  <%= button_to "Like", {:controller => "likes", :action => "create", :id => @quiz.id}, :class => "like_button" %>
+<% end %>
 Comments: <br />
 <% if @quiz.comments.empty? %>
   Be the first to comment!
 <% else %>
-  <%= render :partial => "common/comment", :collection => @quiz.comments %>
+  <div class="comments"><ul>
+    <%= render :partial => "common/comment", :collection => @quiz.comments %>
+    </ul></div>
 <% end %>
 <% form_for :comment, :url => {:controller => "comments", :action=>:create} do |f| %>
   <%= f.error_messages %>
   <%= hidden_field :comment, :quiz_id, :value => @quiz.id %>
-  <%= f.text_area :text %><br />
+  <%= f.text_area :text, :size => "50x4" %><br />
   <%= f.submit "Add comment" %><br />
 <% end %>
 <br /></div>

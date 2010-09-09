@@ -1,29 +1,30 @@
 <html>
-  <head>
-    <title>RoR Quiz | <%= yield :title %></title>
-  </head>
+<head>
+  <title>RoR Quiz | <%= yield :title %></title>
   <%= stylesheet_link_tag "screen"  %>
+</head>
+
   
 <body>
   <%= render :partial => "common/header" %>
 
   <div id="content-wrap" class="clear" >
-<div id="content">
-  <div id="flash">
-    <% flash.each do |key, value| -%>
-      <div id="flash_<%= key %>"><%=h value %></div>
-    <% end -%>
-  </div>
-	   <div id="main">
-  <div class="post">
-  <%= yield %>
-  </div>
-           </div>
+    <div id="content">
+    <% unless flash.empty? %>
+      <div id="flash">
+        <% flash.each do |key, value| -%>
+          <div id="flash_<%= key %>"><%=h value %></div>
+        <% end -%>
+      </div>
+    <% end %>
+
+    <div id="main">
+      <%= yield %>
+    </div>
            
-  <%= render :partial => "common/sidebar" %>
+    <%= render :partial => "common/sidebar" %>
+  </div>
 </div>
-</div>
-  
-  <%= render :partial => "common/footer" %>
+<%= render :partial => "common/footer" %>
 </body>
 </html>

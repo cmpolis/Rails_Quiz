@@ -7,7 +7,7 @@
       <li class="time"><%= quiz.create_time %></li>
       <li class="comment"><a href="#"><%= quiz.comments.count %> comments</a></li>
       <li>Taken <%= quiz.times_taken %> times.</li>
-      <li>Avg score: <%= quiz.avg_score %></li>
+      <li>Avg score: <%= "%2.1f" % quiz.avg_score %></li>
     </ul>
   </div>
 

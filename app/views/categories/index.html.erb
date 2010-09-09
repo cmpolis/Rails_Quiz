@@ -1,7 +1,10 @@
-<h2>Browse by Category</h2>
-<% @categories.each do |cat| %>
-  <h4><%= link_to cat %></h4>
-  <% cat.quizzes.all(:limit => 5).each do |quiz| %>
-    <%= render :partial => "common/quizline", :object => quiz %>
+<% title "Browse by Category" %>
+<div class="one_col">
+  <h2>Browse by Category</h2>
+  <% @categories.each do |cat| %>
+    <h4><%= link_to cat %></h4>
+    <% cat.quizzes.all(:limit => 5).each do |quiz| %>
+      <%= render :partial => "common/quizline", :object => quiz %>
+    <% end %>
   <% end %>
-<% end %>
+</div>

@@ -23,7 +23,8 @@ class Quiz < ActiveRecord::Base
   # validates_presence_of :group_id, :if => Proc.new {|quiz| quiz.private == true}
   validates_presence_of :creator_id
   validates_length_of :title, :in => 6..48
-
+  validates_presence_of :description
+  
   def self.search query
     results = []
     tags = Tag.find(:all, :conditions => ["text like ?", "%#{query.downcase}%"])
@@ -57,5 +58,9 @@ class Quiz < ActiveRecord::Base
   def like_count
     likes.count
   end
-  
+
+  def to_param
+    "#{id}-#{title.parameterize}"
+  end
+
 end
