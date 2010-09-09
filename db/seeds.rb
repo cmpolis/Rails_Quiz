@@ -5,3 +5,9 @@
 #   
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
+Categories = ["Just for Fun", "Math", "Science", "Test Prep", "History", 
+  "Geography", "Art", "Music", "Movies", "Television", "Video Games", 
+  "Literature", "History", "Sports"]
+Categories.each do |name|
+    Category.create :title => name
+end
