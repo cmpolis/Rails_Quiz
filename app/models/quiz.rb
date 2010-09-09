@@ -1,6 +1,6 @@
 class Quiz < ActiveRecord::Base
 
-  QUIZ_TYPES = ["MultipleChoice","Matching","List","ShortAnswer"]
+  QUIZ_TYPES = ["MultipleChoice","List","ShortAnswer"] # TODO: matching
   
   belongs_to :creator, :class_name => "User"
   belongs_to :group
@@ -57,5 +57,5 @@ class Quiz < ActiveRecord::Base
   def like_count
     likes.count
   end
-
+  
 end
