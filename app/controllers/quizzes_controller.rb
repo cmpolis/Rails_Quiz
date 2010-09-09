@@ -13,8 +13,11 @@ class QuizzesController < ApplicationController
   def create
     @quiz = Quiz.new(params[:quiz])
     @quiz.creator_id = current_user.id
-    @quiz.private ||= false
     @quiz.featured ||= false
+    
+    # 'type' is a reserved word in ruby, but neccesary for STI...
+    @quiz[:type] = params[:kind]
+     
     if @quiz.save
       Tag.parse(@quiz.id, params[:tags]) unless params[:tags].blank?
       redirect_to add_question_path(@quiz)

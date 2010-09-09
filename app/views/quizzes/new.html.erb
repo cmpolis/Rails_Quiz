@@ -4,32 +4,27 @@
 <% form_for :quiz, @quiz, :url=>{:action=>:create} do |f| %>
 <%= f.error_messages %>
 <table>
-  <tr> 
-    <td><%= f.label :title, "Quiz Title:"%></td>
-    <td><%= f.text_field :title %></td>
-  </tr>
-  <tr>
-    <td><%= f.label :description, "Description:"%></td>
-    <td><%= f.text_area :description %></td>
-  </tr>
-  <tr>
-    <td><%= f.label :category, "Category" %></td>
-    <td><%= f.collection_select :category_id, Category.all, :id, :title, {:include_blank => 'None'} %></td>
-  </tr>
-  <tr>
-    <td> Tags: </td>
-    <td><%= text_field_tag :tags %></td>
-  </tr>
-  <% if !@groups.nil? %>
-    <tr>
-      <td><%=f.label :private, "Private: "%></td>
-      <td><%= f.check_box :private %></td>
-    </tr>
-    <tr>
-      <td><%=f.label :group_id, "Group: "%></td>
-      <td><%= f.collection_select :group_id, @groups, :id, :name, :include_blank=>"N/A" %></td>
-    </tr>
-    <% end %>
+  <br />
+    <%= f.label :title, "Quiz Title: "%>
+    <%= f.text_field :title %>
+  
+  <br />
+    <%= f.label :description, "Description: "%><br />
+    <%= f.text_area :description, :size => "50x6" %>
+  
+  <br />
+    <%= f.label :category, "Category: " %>
+    <%= f.collection_select :category_id, Category.all, :id, :title, {:include_blank => 'None'} %>
+
+  <br />
+    <%= f.label :type, "Quiz Type: " %>
+    <%= select nil, :kind, Quiz.types %>
+  <br />
+     Tags: 
+    <%= text_field_tag :tags, nil, :size => 55, :placeholder => "Seperate with commas i.e.: tag1, tag2, tag3" %>
+  <br />
+  <%= "Featured? " + f.check_box(:featured) if user_is_admin? %>
+  
   <% end %>
 </table>
 <%= submit_tag("Register") %>
