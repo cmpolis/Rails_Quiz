@@ -77,6 +77,14 @@
    border-style: solid;
    border-color: #86BBDF;
 }
+
+img.quiz_entry {
+    width: 16px;
+    height: 16px;
+    border: 0px;
+    padding: 0px;
+    background:transparent;
+}
 /*---------------------------------------------------------------------------*/
 
 body {

@@ -1,28 +1,30 @@
-<% title "Results for #{@quiz.title}" %>
+<% title "#{@quiz.title}" %>
 
 <div class="right">
-<h3>Results for quiz: <%= @quiz.title %></h3><br />
+<h3><%= @quiz.title %></h3><p>
 <% @quiz.questions.each do |question| %>
   <b><%= question.text %></b><br />
   <% question.answers.each do |answer| %>
-    <%= "X " if @quiz_entry.answers.include?(answer) %>
-    <%= "C " if question.right_ans == answer %>
+    <% if @quiz_entry.answers.include?(answer) %>
+      <%=  image_tag("tick.png", :class => "quiz_entry") %>
+    <% elsif question.right_ans == answer %>
+      <%= image_tag("cross.png", :class => "quiz_entry") %>
+    <% end %>
     <%= answer.text %><br />
   <% end %>
-  <br />
 <% end %>
 You scored: <%= @quiz_entry.correct %> / <%= @quiz_entry.possible %><br />
 Percentile: <%= @quiz_entry.percentile %><br /><br />
-
-Likes: <%= @quiz.like_count %>
+</p>
+<h4>Likes: <%= @quiz.like_count %>
 <% form_tag like_path(:id => @quiz.id), :class => "like_form" do %>
   <%= button_to "Like", {:controller => "likes", :action => "create", :id => @quiz.id}, :class => "like_button" %>
-<% end %>
-Comments: <br />
+<% end %></h4>
+<h4>Comments:</h4>
 <% if @quiz.comments.empty? %>
   Be the first to comment!
 <% else %>
-  <div class="comments"><ul>
+  <div class="comments" id="bottom_comments"><ul>
     <%= render :partial => "common/comment", :collection => @quiz.comments %>
     </ul></div>
 <% end %>

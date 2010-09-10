@@ -1,0 +1,21 @@
+<% title "Profile: #{@user.username}" %>
+
+<div class="one_col">
+  
+  <h3><%= @user.username %></h3>
+  <p><% if @user == current_user %>
+    <%= link_to "Edit profile", edit_user_path(@user) %>
+  <% end  %>
+  <small><%= @user.bio unless @user.bio.blank? %></small></p>
+  <h4>Quizzes Taken: </h4>
+
+  <p><% @taken.each do |qe| %>
+    <%= link_to qe.quiz.title, take_quiz_path(qe.quiz) %><%= "   " + qe.correct.to_s + " / " + qe.possible.to_s %><br />
+  <% end %></p>
+
+  <h4>Quizzes Created: </h4>
+  <p><% @created.each do |quiz| %>
+    <%= link_to quiz, take_quiz_path(quiz) %><br />
+  <% end %>
+  </p><br />
+</div>

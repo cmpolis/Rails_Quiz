@@ -1,7 +1,14 @@
 class UsersController < ApplicationController
+
   def show
     @user = User.find params[:id]
-    @quiz_entries = @user.quiz_entries
+    if @user.private
+      render "private_profile"
+    else
+      @taken = @user.quiz_entries
+      @created = @user.created_quizzes
+      render "public_profile"
+    end
   end
 
   def new

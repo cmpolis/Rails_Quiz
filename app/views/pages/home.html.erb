@@ -2,10 +2,14 @@
 <% title "Home" %>
 
 <h3>Featured quizzes:</h3>
+<p>
 <%= render :partial => "common/quizline", :collection => @featured %>
+</p>
 <h3>All public quizzes:</h3>
+<p>
 <%= render :partial => "common/quizline", :collection => @quizzes %>
-<br \>
+
+<br />
 <%= render :partial => "common/search" %>
-<br \><br \>
+<br /><br /></p>
 </div>

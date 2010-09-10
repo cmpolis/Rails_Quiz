@@ -63,4 +63,8 @@ class Quiz < ActiveRecord::Base
     "#{id}-#{title.parameterize}"
   end
 
+  def to_s
+    title
+  end
+
 end
