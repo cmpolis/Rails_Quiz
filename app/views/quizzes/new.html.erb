@@ -15,7 +15,7 @@
 
     <br />
       <%= f.label :category, "Category: " %>
-      <%= f.collection_select :category_id, Category.all, :id, :title %>
+      <%= f.collection_select :category_id, Category.all, :id, :title, {:include_blank => 'None'} %>
 
     <br />
       <%= f.label :type, "Quiz Type: " %>

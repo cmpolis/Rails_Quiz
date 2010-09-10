@@ -10,10 +10,11 @@ class QuizEntry < ActiveRecord::Base
   validates_presence_of :user_id, :quiz_id
  
   # Returns number of correct answers
-  def correct
-    quiz.correct answers
+  def grade_quiz
+    self.correct = quiz.correct answers
+    self.save
   end
-   
+
   def possible
     quiz.possible
   end

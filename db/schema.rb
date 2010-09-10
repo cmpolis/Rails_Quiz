@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20100910034519) do
   create_table "quiz_entries", :force => true do |t|
     t.integer  "user_id"
     t.integer  "quiz_id"
+    t.integer  "correct"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

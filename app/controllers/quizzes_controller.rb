@@ -36,7 +36,7 @@ class QuizzesController < ApplicationController
 
   def random
     # assumes all quizzes are valid, will need to be updatd!
-    redirect_to take_quiz_path(rand(Quiz.count)+1)
+    redirect_to take_quiz_path(Quiz.find_by_published(true, :order => "rand()"))
   end
 
   def search

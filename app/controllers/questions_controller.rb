@@ -25,7 +25,7 @@ class QuestionsController < ApplicationController
         @quiz.published = true
         @quiz.save
         redirect_to take_quiz_path(@quiz)
-      elsif @quiz.questions.empty?
+      elsif @quiz.questions.empty? and @question.text.blank?
         flash[:notice] = "Cannot publish empty quiz"
         render "#{@quiz.type.downcase}_new"
       elsif @question.errors.empty?
@@ -33,6 +33,7 @@ class QuestionsController < ApplicationController
         flash[:notice] = "Question added, quiz published"
         @quiz.published = true
         @quiz.save
+        redirect_to take_quiz_path(@quiz)
       else
         render "#{@quiz.type.downcase}_new"
       end
