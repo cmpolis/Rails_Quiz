@@ -15,7 +15,7 @@
 
     <br />
       <%= f.label :category, "Category: " %>
-      <%= f.collection_select :category_id, Category.all, :id, :title, {:include_blank => 'None'} %>
+      <%= f.collection_select :category_id, Category.all, :id, :title %>
 
     <br />
       <%= f.label :type, "Quiz Type: " %>
@@ -28,6 +28,6 @@
 
     <% end %>
   </table>
-  <%= submit_tag("Register") %>
+  <%= submit_tag("Create Quiz") %>
   <br />
 </div>

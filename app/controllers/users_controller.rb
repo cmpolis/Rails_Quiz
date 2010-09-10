@@ -2,12 +2,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find params[:id]
-    if @user.private
-      render "private_profile"
-    else
+    if !@user.private || current_user == @user
       @taken = @user.quiz_entries
       @created = @user.created_quizzes
       render "public_profile"
+    else
+      render "private_profile"
     end
   end
 

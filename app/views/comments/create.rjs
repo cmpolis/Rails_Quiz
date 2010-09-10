@@ -1,0 +1,4 @@
+if !@comment.id.nil?
+  page.insert_html :bottom, :bottom_comments, :partial => 'common/comment', :object => @comment
+  page[:comment_form].reset
+end

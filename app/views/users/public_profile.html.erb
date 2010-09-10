@@ -4,9 +4,11 @@
   
   <h3><%= @user.username %></h3>
   <p><% if @user == current_user %>
-    <%= link_to "Edit profile", edit_user_path(@user) %>
+    <%= link_to "Edit profile <br />", edit_user_path(@user) %>
   <% end  %>
-  <small><%= @user.bio unless @user.bio.blank? %></small></p>
+    <b>Bio: </b><%= @user.bio unless @user.bio.blank? %><br />
+    <b>Location: </b><%= @user.location unless @user.location.blank? %><br />
+  </p>
   <h4>Quizzes Taken: </h4>
 
   <p><% @taken.each do |qe| %>

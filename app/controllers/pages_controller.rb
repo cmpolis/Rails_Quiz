@@ -1,8 +1,8 @@
 class PagesController < ApplicationController
   
   def home
-    @quizzes = Quiz.all(:limit => 10)
-    @featured = Quiz.find_all_by_featured(true, :limit => 10)
+    @quizzes = Quiz.find_all_by_published(true, :limit => 10)
+    @featured = Quiz.find_all_by_featured_and_published(true, true, :limit => 10)
   end
 
   def about

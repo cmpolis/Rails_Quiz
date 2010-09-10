@@ -11,13 +11,15 @@
 
   <div id="content-wrap" class="clear" >
     <div id="content">
-    <% unless flash.empty? %>
+      <% unless flash.empty? %>
       <div id="flash">
+      
         <% flash.each do |key, value| -%>
           <div id="flash_<%= key %>"><%=h value %></div>
         <% end -%>
       </div>
     <% end %>
+      
 
     <div id="main">
       <%= yield %>

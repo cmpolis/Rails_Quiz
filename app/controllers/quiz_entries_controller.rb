@@ -12,10 +12,15 @@ class QuizEntriesController < ApplicationController
         redirect_to take_quiz_question :id => params[:id], :question => 0
       else
         @quiz = Quiz.find(params[:id])
-        @quiz_entry = QuizEntry.new
+        if !@quiz.published
+          flash[:notice] = "Quiz is not published yet"
+          redirect_to root_url
+        else
+          @quiz_entry = QuizEntry.new
 
-        @selected = [] # Used to persist selected answers
-        render "#{@quiz.type.downcase}_new"
+          @selected = [] # Used to persist selected answers
+          render "#{@quiz.type.downcase}_new"
+        end
       end
     end
   end
@@ -46,9 +51,13 @@ class QuizEntriesController < ApplicationController
     if @quiz_entry.errors.empty?
       @quiz_entry.save
       redirect_to quiz_results_path(@quiz_entry)
+    elsif params[:answers].empty?
+      flash[:notice] = "Must submit answers"
+      redirect_to request.referer
     else
       flash[:notice] = "Quiz submission unsuccesful"
-  
+
+
       # remember which answers were selected
       @selected = params[:answers]
       #@quiz = @quiz_entry.quiz

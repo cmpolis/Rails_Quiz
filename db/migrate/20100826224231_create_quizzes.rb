@@ -4,6 +4,7 @@ class CreateQuizzes < ActiveRecord::Migration
       t.string :type
       #t.integer :group_id
       #t.boolean :private
+      t.boolean :published
       t.integer :creator_id
       t.string :title
       t.string :description

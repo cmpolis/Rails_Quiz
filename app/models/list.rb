@@ -2,7 +2,7 @@ class List < Quiz
 
   def build_question
     question = self.questions.build
-    (1..8).each {question.answers.build}
+    (1..7).each {question.answers.build}
     question
   end
 
@@ -12,11 +12,15 @@ class List < Quiz
     @question.valid?  # generate errors for question
 
     @question.answers.each do |ans|
-      ans.delete if ans.text.blank?
+      if ans.text.blank?
+        ans.delete
+      end
     end
-    
-    @question.valid?
 
+    @question.valid?
+    
+    @question.errors.add_to_base("Must have at least one answer") if @question.answers.all? { |ans| ans.text.blank? }
+    logger.debug "!!QUESTION COUNT #{@question.answers.size} + #{@question.errors.full_messages}"
     @question
   end
 

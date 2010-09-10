@@ -85,6 +85,28 @@ img.quiz_entry {
     padding: 0px;
     background:transparent;
 }
+
+.category ul li a:link,
+.category ul li a:visited {
+   color: #33799B;
+	padding-left: 10px;
+	font-weight: bold;
+   text-transform: uppercase;
+}
+.category ul li a span {
+	color: #959595;
+	font-family: 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, Sans-Serif;
+	font-style: normal;
+	font-weight: normal;
+	text-transform: none;
+}
+.category li { display: inline; }
+.category ul { list-style-type:none; display:inline; }
+.category ul li a:hover { color: #000; }
+.category ul { margin: 0 0 0 5px; padding: 0; white-space:nowrap; }
+.category ul ul li { border: none;  white-space:nowrap; }
+
+
 /*---------------------------------------------------------------------------*/
 
 body {

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100908231328) do
+ActiveRecord::Schema.define(:version => 20100910034519) do
 
   create_table "answer_entries", :force => true do |t|
     t.integer  "quiz_entry_id"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20100908231328) do
 
   create_table "quizzes", :force => true do |t|
     t.string   "type"
+    t.boolean  "published"
     t.integer  "creator_id"
     t.string   "title"
     t.string   "description"
@@ -101,6 +102,16 @@ ActiveRecord::Schema.define(:version => 20100908231328) do
     t.datetime "updated_at"
     t.boolean  "featured"
     t.integer  "category_id"
+  end
+
+  create_table "reports", :force => true do |t|
+    t.integer  "user_id"
+    t.boolean  "fixed"
+    t.string   "text"
+    t.integer  "quiz_id"
+    t.integer  "reason"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "short_answers", :force => true do |t|
@@ -130,7 +141,6 @@ ActiveRecord::Schema.define(:version => 20100908231328) do
     t.boolean  "email_confirmed",                   :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "full_name"
     t.string   "bio"
     t.string   "location"
     t.string   "username"

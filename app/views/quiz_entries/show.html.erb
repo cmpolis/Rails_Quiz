@@ -7,11 +7,12 @@
   <% question.answers.each do |answer| %>
     <% if @quiz_entry.answers.include?(answer) %>
       <%=  image_tag("tick.png", :class => "quiz_entry") %>
-    <% elsif question.right_ans == answer %>
+    <% elsif @quiz.type != "MultipleChoice" or question.right_ans == answer %>
       <%= image_tag("cross.png", :class => "quiz_entry") %>
     <% end %>
     <%= answer.text %><br />
   <% end %>
+    <br />
 <% end %>
 You scored: <%= @quiz_entry.correct %> / <%= @quiz_entry.possible %><br />
 Percentile: <%= @quiz_entry.percentile %><br /><br />
@@ -21,14 +22,14 @@ Percentile: <%= @quiz_entry.percentile %><br /><br />
   <%= button_to "Like", {:controller => "likes", :action => "create", :id => @quiz.id}, :class => "like_button" %>
 <% end %></h4>
 <h4>Comments:</h4>
-<% if @quiz.comments.empty? %>
-  Be the first to comment!
-<% else %>
-  <div class="comments" id="bottom_comments"><ul>
-    <%= render :partial => "common/comment", :collection => @quiz.comments %>
-    </ul></div>
-<% end %>
-<% form_for :comment, :url => {:controller => "comments", :action=>:create} do |f| %>
+<div id="no_comments">
+<%= "<p>Be the first to comment</p>" if @quiz.comments.empty? %>
+</div>
+  <div class="comments" ><ul id="bottom_comments">
+  <%= render :partial => "common/comment", :collection => @quiz.comments %>
+  </ul></div>
+
+<% form_remote_for :comment, :url => {:controller => "comments", :action=>:create}, :html => {:id => "comment_form"} do |f| %>
   <%= f.error_messages %>
   <%= hidden_field :comment, :quiz_id, :value => @quiz.id %>
   <%= f.text_area :text, :size => "50x4" %><br />

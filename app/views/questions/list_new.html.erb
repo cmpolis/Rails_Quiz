@@ -5,16 +5,20 @@
 <%= f.error_messages %>
 <table>
   <tr>
-    <td><%= f.label :text, "List: "%>
+    <td><%= f.label :text, "Name: "%>
     <%= f.text_field :text %></td>
     <%= f.hidden_field(:quiz_id, :value => @quiz.id)  %>
   </tr>
+  <div id="answer_fields">
   <% f.fields_for :answers do |answer_fields| %>
     <tr>
       <td><%= answer_fields.text_field :text %></td>
     </tr>
   <% end %>
+  </div>
 <% end %>
 </table>
-<%= submit_tag "Add question" %>
+<br />
+<%= submit_tag "Add Question" %>
+<%= submit_tag "Publish Quiz"%>
 <br />

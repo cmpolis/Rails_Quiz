@@ -2,7 +2,10 @@
 
 <div class="one_col">
   <h2><%= @user.username %></h2>
-  <small><%= @user.bio unless @user.bio.blank? %></small>
+  <p>
+    <b>Bio: </b><%= @user.bio unless @user.bio.blank? %><br />
+    <b>Location: </b><%= @user.location unless @user.location.blank? %><br />
+  </p>
   <h4>Quizzes Taken: <%= @user.quiz_entries.count %></h4>
   <br />
   <p><i>User profile is set to private</i></p>

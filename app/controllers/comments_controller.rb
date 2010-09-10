@@ -7,12 +7,16 @@ class CommentsController < ApplicationController
       @comment = Comment.new(params[:comment])
       @comment.user_id = current_user.id
       if @comment.save
-        flash[:notice] = "Comment added"
+        # flash[:notice] = "Comment added"
       else
-        flash[:notice] = "Unable to add comment, #{@comment.errors.full_messages}"
+        # flash[:notice] = "Unable to add comment, #{@comment.errors.full_messages}"
       end
     end
-    redirect_to request.referer
+    # redirect_to request.referer
+    respond_to do |format|
+      format.html { redirect_to request.referer}
+      format.js
+    end
   end
 
 end

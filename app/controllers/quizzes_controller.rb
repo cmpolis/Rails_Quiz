@@ -15,6 +15,7 @@ class QuizzesController < ApplicationController
     @quiz.creator_id = current_user.id
     @quiz.featured ||= false
     @quiz.description ||= ""
+    @quiz.published = false
     
     # 'type' is a reserved word in ruby, but neccesary for STI...
     @quiz[:type] = params[:kind]
