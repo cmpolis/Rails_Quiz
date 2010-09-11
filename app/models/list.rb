@@ -24,7 +24,7 @@ class List < Quiz
     @question
   end
 
-  def possible
+  def possible_count
     answers.count
   end
 

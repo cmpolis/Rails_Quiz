@@ -1,0 +1,4 @@
+<div id="newest_results">
+  <%= render :partial => "common/quizline", :collection => @newest %>
+  <%= will_paginate @newest, :param_name => "newest_page" %>
+</div>

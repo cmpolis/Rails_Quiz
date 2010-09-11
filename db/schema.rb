@@ -99,6 +99,8 @@ ActiveRecord::Schema.define(:version => 20100910034519) do
     t.integer  "creator_id"
     t.string   "title"
     t.string   "description"
+    t.integer  "possible"
+    t.integer  "times_taken"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "featured"

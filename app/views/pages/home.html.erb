@@ -1,15 +1,18 @@
 <div class="one_col">
 <% title "Home" %>
 
-<h3>Featured quizzes:</h3>
-<p>
-<%= render :partial => "common/quizline", :collection => @featured %>
-</p>
-<h3>All public quizzes:</h3>
-<p>
-<%= render :partial => "common/quizline", :collection => @quizzes %>
-
-<br />
+<table width="640px">
+  <tr>
+    <td width="50%">
+      <h3>Newest:</h3>
+      <%= render :partial=>"newest_results" %>
+    </td>
+    
+    <td width="50%">
+      <h3>Popular:</h3>
+      <%= render :partial=>"popular_results" %>
+    </td>
+  </tr>
+</table>
 <%= render :partial => "common/search" %>
-<br /><br /></p>
 </div>

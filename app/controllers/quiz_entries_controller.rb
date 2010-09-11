@@ -32,6 +32,8 @@ class QuizEntriesController < ApplicationController
     if @quiz_entry.errors.empty?
       @quiz_entry.save
       @quiz_entry.grade_quiz
+      @quiz.times_taken += 1
+      @quiz.save
       redirect_to quiz_results_path(@quiz_entry)
     elsif params[:answers].empty?
       flash[:notice] = "Must submit answers"
@@ -50,6 +52,13 @@ class QuizEntriesController < ApplicationController
   # Quiz results page
   def show
     @quiz_entry = QuizEntry.find(params[:id], :include => { :quiz => [{:questions => :answers}, :tags]})
+    if @quiz_entry.nil?
+      flash[:notice] = "Invalid quiz results ID"
+      redirect_to root_url
+    elsif @quiz_entry.user != current_user
+      @quiz = @quiz_entry.quiz
+      render :show_summary
+    end
     @quiz = @quiz_entry.quiz
   end
 

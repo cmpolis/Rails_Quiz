@@ -18,7 +18,7 @@ class MultipleChoice < Quiz
     @question
   end
 
-  def possible
+  def possible_count
     questions.count
   end
 

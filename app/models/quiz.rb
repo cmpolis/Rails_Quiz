@@ -22,9 +22,13 @@ class Quiz < ActiveRecord::Base
   # validates_inclusion_of :private, :in => [true, false]
   # validates_presence_of :group_id, :if => Proc.new {|quiz| quiz.private == true}
   validates_presence_of :creator_id
-  validates_length_of :title, :in => 6..48
-  validates_presence_of :description
+  validates_length_of :title, :in => 6..30
+  validates_length_of :description, :in => 10..50
   
+  #Will_Paginate
+  cattr_reader :per_page
+  @@per_page = 7
+
   def self.search query
     results = []
     tags = Tag.find(:all, :conditions => ["text like ?", "%#{query.downcase}%"])
@@ -38,6 +42,13 @@ class Quiz < ActiveRecord::Base
     QUIZ_TYPES
   end
 
+  def publish
+    self.published = true
+    self.possible = possible_count
+    self.save
+    logger.debug "SAVING QUIZ: #{self.errors.full_messages}"
+  end
+  
   # Returns an array of all the scores recieved for a quiz
   def scores
     quiz_entries.collect { |qe| qe.score }
@@ -45,10 +56,6 @@ class Quiz < ActiveRecord::Base
 
   def avg_score
     scores.inject(0.0) { |sum, score| sum + score } / (scores.count * 0.01)
-  end
-
-  def times_taken
-    quiz_entries.count
   end
 
   def create_time
@@ -65,6 +72,10 @@ class Quiz < ActiveRecord::Base
 
   def to_s
     title
+  end
+
+  def taken
+    update_attribute(:times_taken, times_taken+1)
   end
 
 end

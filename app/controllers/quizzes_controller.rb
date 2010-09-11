@@ -16,6 +16,7 @@ class QuizzesController < ApplicationController
     @quiz.featured ||= false
     @quiz.description ||= ""
     @quiz.published = false
+    @quiz.times_taken = 0
     
     # 'type' is a reserved word in ruby, but neccesary for STI...
     @quiz[:type] = params[:kind]
@@ -40,11 +41,22 @@ class QuizzesController < ApplicationController
   end
 
   def search
-    if params[:query].empty?
+    if params[:query].empty? || params[:query].length < 3
       flash[:notice] = "Invalid search query"
       redirect_to request.referer
     else
-      @quizzes = Quiz.search params[:query]
+      @quizzes = Quiz.search(params[:query]).paginate :per_page => 10, :page => params[:page]
+
+      respond_to do |format|
+        format.html
+        format.js {
+          render :update do |page|
+            # 'page.replace' will replace full "results" block...works for this example
+            # 'page.replace_html' will replace "results" inner html...useful elsewhere
+            page.replace 'search_results', :partial => 'search_results'
+          end
+        }
+        end
     end
   end
 

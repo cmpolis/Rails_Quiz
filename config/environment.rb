@@ -11,6 +11,9 @@ Rails::Initializer.run do |config|
   # CLEARANCE
   config.gem 'clearance'  
 
+  #Will_Paginate
+  config.gem 'will_paginate', :version => '~> 2.3.11', :source => 'http://gemcutter.org'
+
   # Performance Testing
   # config.gem 'ruby-prof'
 

@@ -8,6 +8,8 @@ class CreateQuizzes < ActiveRecord::Migration
       t.integer :creator_id
       t.string :title
       t.string :description
+      t.integer :possible
+      t.integer :times_taken
 
       t.timestamps
     end

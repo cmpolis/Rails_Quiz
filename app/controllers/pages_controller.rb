@@ -1,8 +1,23 @@
 class PagesController < ApplicationController
   
   def home
-    @quizzes = Quiz.find_all_by_published(true, :limit => 10)
-    @featured = Quiz.find_all_by_featured_and_published(true, true, :limit => 10)
+    # @newest = Quiz.find_all_by_published(true, :limit => 10, :order => 'created_at')
+    # @popular = Quiz.find_all_by_published(true, :limit => 10, :order => 'times_taken DESC')
+
+    @newest = Quiz.paginate :page => params[:newest_page], :order => 'created_at'
+    @popular = Quiz.paginate :page => params[:popular_page], :order => 'times_taken DESC'
+
+    respond_to do |format|
+      format.html
+      format.js {
+        render :update do |page|
+          # 'page.replace' will replace full "results" block...works for this example
+          # 'page.replace_html' will replace "results" inner html...useful elsewhere
+          page.replace 'newest_results', :partial => 'newest_results'
+          page.replace 'popular_results', :partial => 'popular_results'
+        end
+      }
+    end
   end
 
   def about

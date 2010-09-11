@@ -1,0 +1,4 @@
+<div id="popular_results">
+  <%= render :partial => "common/quizline", :collection => @popular %>
+  <%= will_paginate @popular, :param_name => "popular_page" %>
+</div>

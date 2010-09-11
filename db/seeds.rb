@@ -7,7 +7,7 @@
 #   Major.create(:name => 'Daley', :city => cities.first)
 Categories = ["Just for Fun", "Math", "Science", "Test Prep", "History", 
   "Geography", "Art", "Music", "Movies", "Television", "Video Games", 
-  "Literature", "History", "Sports"]
+  "Literature", "Sports"]
 Categories.each do |name|
     Category.create :title => name
 end

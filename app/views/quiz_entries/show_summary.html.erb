@@ -1,22 +1,11 @@
 <% title "#{@quiz.title}" %>
 
 <div class="right">
-<h2><%= @quiz.title %></h2><p>
-<% @quiz.questions.each do |question| %>
-  <b><%= question.text %></b><br />
-  <% question.answers.each do |answer| %>
-    <% if @quiz_entry.answers.include?(answer) %>
-      <%=  image_tag("tick.png", :class => "quiz_entry") %>
-    <% elsif @quiz.type != "MultipleChoice" or question.right_ans == answer %>
-      <%= image_tag("cross.png", :class => "quiz_entry") %>
-    <% end %>
-    <%= answer.text %><br />
-  <% end %>
-    <br />
-<% end %></p>
+<h3><%= @quiz.title %></h3>
 <h4>Score: <%= @quiz_entry.correct %> / <%= @quiz_entry.possible %><br />
-Percentile: <%= @quiz_entry.percentile %></h4>
-
+  Percentile: <%= @quiz_entry.percentile %></h4>
+<p><i>Showing summary, login to view full results.</i>
+</p>
 <h4>Likes: <%= @quiz.like_count %>
 <% form_tag like_path(:id => @quiz.id), :class => "like_form" do %>
   <%= button_to "Like", {:controller => "likes", :action => "create", :id => @quiz.id}, :class => "like_button" %>
@@ -34,7 +23,7 @@ Percentile: <%= @quiz_entry.percentile %></h4>
   <%= hidden_field :comment, :quiz_id, :value => @quiz.id %>
   <%= f.text_area :text, :size => "50x4", :onkeyup => "validate_comment()" %><br />
   <%= f.submit "Add comment" %>
-  <div id="comment_warning"></div>
+  <div id="comment_warning"></div><br />
 <% end %>
 <br /></div>
 <%= render :partial=>"common/quiz_info", :locals => { :quiz => @quiz } %>
