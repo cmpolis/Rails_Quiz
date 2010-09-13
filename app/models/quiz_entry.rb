@@ -30,4 +30,8 @@ class QuizEntry < ActiveRecord::Base
     ((scores.index(score) + 1) * 100) / scores.length
   end
 
+  def to_tweet
+    %!"Took quiz '#{quiz.title}', scored #{correct}/#{possible}"!
+  end
+
 end

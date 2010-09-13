@@ -15,11 +15,22 @@ class CategoriesController < ApplicationController
   end
 
   def show
-   @category = Category.find_by_id params[:id]
+   @category = Category.find_by_id params[:id], :include => "quizzes"
    if @category.nil?
-      redirect_to root_url
-    else
-      render :show
+     flash[:notice] = "Invalid category ID"
+     redirect_to root_url
+   else
+     @quizzes = @category.quizzes.paginate :page => params[:page]
+     respond_to do |format|
+     format.html
+     format.js {
+       render :update do |page|
+         # 'page.replace' will replace full "results" block...works for this example
+         # 'page.replace_html' will replace "results" inner html...useful elsewhere
+         page.replace 'category_quizzes', :partial => 'show_quizzes'
+       end
+     }
+     end
     end
   end
 

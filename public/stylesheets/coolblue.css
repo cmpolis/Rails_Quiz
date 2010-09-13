@@ -103,7 +103,7 @@ img.quiz_entry {
 .category li { display: inline; }
 .category ul { list-style-type:none; display:inline; }
 .category ul li a:hover { color: #000; }
-.category ul { margin: 0 0 0 5px; padding: 0; white-space:nowrap; }
+.category ul { margin: 0 0 0 5px; padding-left: 20px; white-space:nowrap; }
 .category ul ul li { border: none;  white-space:nowrap; }
 
 small {

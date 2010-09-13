@@ -9,7 +9,11 @@ require File.join(File.dirname(__FILE__), 'boot')
 Rails::Initializer.run do |config|
 
   # CLEARANCE
-  config.gem 'clearance'  
+  # config.gem 'clearance'  
+
+  #config.gem "authlogic"
+
+  config.active_record.observers = :user_observer
 
   #Will_Paginate
   config.gem 'will_paginate', :version => '~> 2.3.11', :source => 'http://gemcutter.org'

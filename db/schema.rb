@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100910034519) do
+ActiveRecord::Schema.define(:version => 20100913095227) do
 
   create_table "answer_entries", :force => true do |t|
     t.integer  "quiz_entry_id"
@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(:version => 20100910034519) do
     t.datetime "updated_at"
   end
 
+  add_index "answer_entries", ["quiz_entry_id", "answer_id"], :name => "index_answer_entries_on_quiz_entry_id_and_answer_id"
+
   create_table "answers", :force => true do |t|
     t.string   "text"
     t.boolean  "right"
@@ -25,6 +27,8 @@ ActiveRecord::Schema.define(:version => 20100910034519) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
 
   create_table "categories", :force => true do |t|
     t.string   "title"
@@ -40,6 +44,8 @@ ActiveRecord::Schema.define(:version => 20100910034519) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "comments", ["user_id", "quiz_id"], :name => "index_comments_on_user_id_and_quiz_id"
 
   create_table "group_memberships", :force => true do |t|
     t.integer  "group_id"
@@ -63,20 +69,7 @@ ActiveRecord::Schema.define(:version => 20100910034519) do
     t.datetime "updated_at"
   end
 
-  create_table "lists", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "matchings", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "multiple_choices", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "likes", ["user_id", "quiz_id"], :name => "index_likes_on_user_id_and_quiz_id"
 
   create_table "questions", :force => true do |t|
     t.integer  "quiz_id"
@@ -84,6 +77,8 @@ ActiveRecord::Schema.define(:version => 20100910034519) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "questions", ["quiz_id"], :name => "index_questions_on_quiz_id"
 
   create_table "quiz_entries", :force => true do |t|
     t.integer  "user_id"
@@ -93,6 +88,8 @@ ActiveRecord::Schema.define(:version => 20100910034519) do
     t.datetime "updated_at"
   end
 
+  add_index "quiz_entries", ["user_id", "quiz_id"], :name => "index_quiz_entries_on_user_id_and_quiz_id"
+
   create_table "quizzes", :force => true do |t|
     t.string   "type"
     t.boolean  "published"
@@ -101,11 +98,13 @@ ActiveRecord::Schema.define(:version => 20100910034519) do
     t.string   "description"
     t.integer  "possible"
     t.integer  "times_taken"
+    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "featured"
-    t.integer  "category_id"
   end
+
+  add_index "quizzes", ["creator_id", "category_id", "times_taken"], :name => "index_quizzes_on_creator_id_and_category_id_and_times_taken"
 
   create_table "reports", :force => true do |t|
     t.integer  "user_id"
@@ -117,10 +116,7 @@ ActiveRecord::Schema.define(:version => 20100910034519) do
     t.datetime "updated_at"
   end
 
-  create_table "short_answers", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "reports", ["user_id", "quiz_id"], :name => "index_reports_on_user_id_and_quiz_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
@@ -129,6 +125,8 @@ ActiveRecord::Schema.define(:version => 20100910034519) do
     t.datetime "updated_at"
   end
 
+  add_index "taggings", ["tag_id", "quiz_id"], :name => "index_taggings_on_tag_id_and_quiz_id"
+
   create_table "tags", :force => true do |t|
     t.string   "text"
     t.datetime "created_at"
@@ -136,14 +134,17 @@ ActiveRecord::Schema.define(:version => 20100910034519) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email"
-    t.string   "encrypted_password", :limit => 128
-    t.string   "salt",               :limit => 128
-    t.string   "confirmation_token", :limit => 128
-    t.string   "remember_token",     :limit => 128
-    t.boolean  "email_confirmed",                   :default => true, :null => false
+    t.string   "login",                     :limit => 40
+    t.string   "name",                      :limit => 100, :default => ""
+    t.string   "email",                     :limit => 100
+    t.string   "crypted_password",          :limit => 40
+    t.string   "salt",                      :limit => 40
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "remember_token",            :limit => 40
+    t.datetime "remember_token_expires_at"
+    t.string   "activation_code",           :limit => 40
+    t.datetime "activated_at"
     t.string   "bio"
     t.string   "location"
     t.string   "username"
@@ -151,7 +152,6 @@ ActiveRecord::Schema.define(:version => 20100910034519) do
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
-  add_index "users", ["id", "confirmation_token"], :name => "index_users_on_id_and_confirmation_token"
-  add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
+  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
 
 end

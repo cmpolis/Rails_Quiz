@@ -1,8 +1,8 @@
-<% title "Profile: #{@user.username}" %>
+<% title "Profile: #{@user}" %>
 
 <div class="one_col">
   
-  <h3><%= @user.username %></h3>
+  <h3><%= @user %></h3>
   <p><% if @user == current_user %>
     <%= link_to "Edit profile <br />", edit_user_path(@user) %>
   <% end  %>
@@ -12,12 +12,12 @@
   <h4>Quizzes Taken: </h4>
 
   <p><% @taken.each do |qe| %>
-    <%= link_to qe.quiz.title, take_quiz_path(qe.quiz) %><%= "   " + qe.correct.to_s + " / " + qe.possible.to_s %><br />
+    <%= time_ago qe.created_at %>: <%= link_to qe.quiz.title, take_quiz_path(qe.quiz) %><b><%= "   " + qe.correct.to_s + " / " + qe.possible.to_s %></b><br />
   <% end %></p>
 
   <h4>Quizzes Created: </h4>
   <p><% @created.each do |quiz| %>
-    <%= link_to quiz, take_quiz_path(quiz) %><br />
+    <%= time_ago quiz.created_at %>:  <%= link_to quiz, take_quiz_path(quiz) %><br />
   <% end %>
   </p><br />
 </div>

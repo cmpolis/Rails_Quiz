@@ -1,6 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
- 
-  map.sign_up '/sign_up', :controller => 'users', :action => 'new'    
+  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
+  map.login '/login', :controller => 'sessions', :action => 'new'
+  map.register '/register', :controller => 'users', :action => 'create'
+  map.signup '/signup', :controller => 'users', :action => 'new'
+  #map.resources :users
+
+map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
+
+  map.resource :session
 
   map.join_group '/join_group/:group_id', :controller => 'group_memberships', :action => 'create'
 
@@ -16,6 +23,9 @@ ActionController::Routing::Routes.draw do |map|
   
   map.random '/random', :controller => 'quizzes', :action => 'random'
 
+  map.faq '/faq', :controller => 'pages', :action => 'faq'
+  map.usage '/usage', :controller => 'pages', :action => 'usage'
+  
   map.resources :comments
   map.resources :groups
   map.resources :users
@@ -24,7 +34,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :categories
   map.resources :tags, :only => :show
   
-  Clearance::Routes.draw(map)
+  # Clearance::Routes.draw(map)
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

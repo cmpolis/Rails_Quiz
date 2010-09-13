@@ -6,10 +6,6 @@
   Percentile: <%= @quiz_entry.percentile %></h4>
 <p><i>Showing summary, login to view full results.</i>
 </p>
-<h4>Likes: <%= @quiz.like_count %>
-<% form_tag like_path(:id => @quiz.id), :class => "like_form" do %>
-  <%= button_to "Like", {:controller => "likes", :action => "create", :id => @quiz.id}, :class => "like_button" %>
-<% end %></h4>
 <h4>Comments:</h4>
 <div id="no_comments">
 <%= "<p>Be the first to comment</p>" if @quiz.comments.empty? %>

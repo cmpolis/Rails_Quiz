@@ -6,9 +6,11 @@ class CreateLikes < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :likes, [:user_id, :quiz_id]
   end
 
   def self.down
+    remove_index :likes, [:user_id, :quiz_id]
     drop_table :likes
   end
 end

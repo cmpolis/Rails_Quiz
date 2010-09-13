@@ -9,9 +9,11 @@ class CreateReports < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :reports, [:user_id, :quiz_id]
   end
 
   def self.down
+    add_index :reports, [:user_id, :quiz_id]
     drop_table :reports
   end
 end

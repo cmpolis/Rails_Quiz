@@ -1,0 +1,15 @@
+<% title "Login" %>
+<h2>Log In</h2>
+
+<% form_tag session_path do -%>
+<%= label_tag 'login' %>
+<%= text_field_tag 'login', @login, :size => 30 %><br />
+
+<%= label_tag 'password' %>
+<%= password_field_tag 'password', nil, :size => 30 %><br />
+
+<%= label_tag 'remember_me', 'Remember me' %>
+<%= check_box_tag 'remember_me', '1', @remember_me %><br />
+
+<%= submit_tag 'Log in' %>
+<% end -%>

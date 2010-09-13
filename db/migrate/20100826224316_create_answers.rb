@@ -7,9 +7,11 @@ class CreateAnswers < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :answers, :question_id
   end
 
   def self.down
+    remove_index :answers, :question_id
     drop_table :answers
   end
 end

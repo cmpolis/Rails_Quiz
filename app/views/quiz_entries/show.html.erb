@@ -16,17 +16,20 @@
 <% end %></p>
 <h4>Score: <%= @quiz_entry.correct %> / <%= @quiz_entry.possible %><br />
 Percentile: <%= @quiz_entry.percentile %></h4>
-
-<h4>Likes: <%= @quiz.like_count %>
-<% form_tag like_path(:id => @quiz.id), :class => "like_form" do %>
-  <%= button_to "Like", {:controller => "likes", :action => "create", :id => @quiz.id}, :class => "like_button" %>
-<% end %></h4>
+<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+<div><p>
+   <a href="http://twitter.com/share" class="twitter-share-button"
+      data-url=<%= %!"www.quizir.com#{take_quiz_path(@quiz_entry)}"! %>
+      data-via="quizir"
+      data-text=<%= @quiz_entry.to_tweet %>
+      data-count="none">Tweet</a>
+</p></div>
 <h4>Comments:</h4>
 <div id="no_comments">
 <%= "<p>Be the first to comment</p>" if @quiz.comments.empty? %>
 </div>
   <div class="comments" ><ul id="bottom_comments">
-  <%= render :partial => "common/comment", :collection => @quiz.comments %>
+  <%= render :partial => "common/comment", :collection => @quiz.comments(:order => "created_at") %>
   </ul></div>
 
 <% form_remote_for :comment, :url => {:controller => "comments", :action=>:create}, :html => {:id => "comment_form"} do |f| %>

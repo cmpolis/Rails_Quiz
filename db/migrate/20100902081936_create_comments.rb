@@ -7,9 +7,11 @@ class CreateComments < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :comments, [:user_id, :quiz_id]
   end
 
   def self.down
+    remove_index :comments, [:user_id, :quiz_id]
     drop_table :comments
   end
 end

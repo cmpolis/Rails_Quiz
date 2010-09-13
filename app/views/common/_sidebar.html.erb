@@ -1,7 +1,7 @@
 <div id="sidebar">
 
   <div class="about-me">
-    <% if signed_in? %>
+    <% if logged_in? %>
       <%= render :partial => "common/sidebar_profile" %>
     <% else %>
       <%= render :partial => "common/sidebar_login" %>

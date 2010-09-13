@@ -6,9 +6,11 @@ class CreateTaggings < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :taggings, [:tag_id, :quiz_id]
   end
 
   def self.down
+    remove_index :taggings, [:tag_id, :quiz_id]
     drop_table :taggings
   end
 end

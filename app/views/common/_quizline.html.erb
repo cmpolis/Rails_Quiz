@@ -1,5 +1,5 @@
 <b><%= link_to "#{quizline.title}", take_quiz_path(quizline) %></b> <br />
 <small><%= quizline.description %><br />
-  <i>created at <%= quizline.create_time %> by <%= link_to quizline.creator, quizline.creator %><br />
-<%= "in #{link_to(quizline.category, quizline.category)}<br />" if quizline.category %>
+  <i>created <%= time_ago quizline.created_at %> ago by <%= link_to quizline.creator, quizline.creator %>
+<%= "in #{link_to(quizline.category, quizline.category)}" if quizline.category %><br />
 taken <%= quizline.times_taken %> times </i><br /> </small><br />

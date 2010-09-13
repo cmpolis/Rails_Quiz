@@ -9,8 +9,8 @@
       <li><%= link_to "Browse", categories_url %></li>
       <li><%= link_to "Create", new_quiz_path %></li>
       <li><%= link_to "Random", random_path %></li>
-      <% unless signed_in? %>
-        <li><%= link_to "Register", sign_up_path %></li>
+      <% unless logged_in? %>
+        <li><%= link_to "Register", signup_path %></li>
       <% else %>
         <li><%= link_to "Profile", current_user %></li>
       <% end %>

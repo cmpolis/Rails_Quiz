@@ -1,0 +1,26 @@
+<% title "Edit Profile" %>
+<h2><%= current_user %>: Edit Profile </h2>
+
+<% form_for current_user, :url => current_user, :method => :post do |f| %>
+  <table width="70%">
+  <%= error_messages_for :user %>
+  <tr>
+    <td><%= f.label :location %></td>
+    <td><%= f.text_field :location, :placeholder => "optional" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :bio %></td>
+    <td><%= f.text_field :bio, :placeholder => "optional" %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :private, "Prviate profile" %></td>
+    <td><%= f.check_box :private %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :password %></td>
+    <td><%= f.password_field :password %></td>
+  </tr>
+  <tr><td colspan="2"><center><%= submit_tag 'Save Changes', :disable_with => 'Please wait...' %></center></td></tr>
+  </table>
+  <br />
+<% end %>

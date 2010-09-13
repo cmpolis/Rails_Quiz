@@ -6,9 +6,11 @@ class CreateQuestions < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :questions, :quiz_id
   end
 
   def self.down
+    remove_index :questions, :quiz_id
     drop_table :questions
   end
 end

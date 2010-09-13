@@ -6,9 +6,11 @@ class CreateAnswerEntries < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :answer_entries, [:quiz_entry_id, :answer_id]
   end
 
   def self.down
+    remove_index :answer_entries, [:quiz_entry_id, :answer_id]
     drop_table :answer_entries
   end
 end

@@ -1,6 +1,6 @@
 class QuizEntriesController < ApplicationController
   def new
-    if !signed_in? 
+    if !logged_in? 
       flash[:notice] = "Must be logged in to take quiz"
       redirect_to root_url
     else

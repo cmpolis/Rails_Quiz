@@ -15,7 +15,7 @@ class Quiz < ActiveRecord::Base
   has_many :taggings
   has_many :tags, :through => :taggings
 
-  has_many :comments
+  has_many :comments, :order => "created_at ASC"
   has_many :likes
 
   validates_inclusion_of :featured, :in => [true, false]
@@ -56,10 +56,6 @@ class Quiz < ActiveRecord::Base
 
   def avg_score
     scores.inject(0.0) { |sum, score| sum + score } / (scores.count * 0.01)
-  end
-
-  def create_time
-    Time.at(created_at.to_i).strftime("%m/%d/%Y")
   end
 
   def like_count
