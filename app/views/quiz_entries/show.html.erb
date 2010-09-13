@@ -19,7 +19,7 @@ Percentile: <%= @quiz_entry.percentile %></h4>
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
 <div><p>
    <a href="http://twitter.com/share" class="twitter-share-button"
-      data-url=<%= %!"www.quizir.com#{take_quiz_path(@quiz_entry)}"! %>
+      data-url=<%= %!"www.quizir.com#{take_quiz_path(@quiz)}"! %>
       data-via="quizir"
       data-text=<%= @quiz_entry.to_tweet %>
       data-count="none">Tweet</a>
@@ -39,5 +39,6 @@ Percentile: <%= @quiz_entry.percentile %></h4>
   <%= f.submit "Add comment" %>
   <div id="comment_warning"></div>
 <% end %>
-<br /></div>
+<br />
+<p><%= link_to "Report problem with quiz", new_report_path(:id => @quiz.id) %></p> </div>
 <%= render :partial=>"common/quiz_info", :locals => { :quiz => @quiz } %>

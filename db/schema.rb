@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100913095227) do
+ActiveRecord::Schema.define(:version => 20100913112118) do
 
   create_table "answer_entries", :force => true do |t|
     t.integer  "quiz_entry_id"
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(:version => 20100913095227) do
   end
 
   add_index "comments", ["user_id", "quiz_id"], :name => "index_comments_on_user_id_and_quiz_id"
+
+  create_table "feedbacks", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "body"
+    t.string   "email"
+    t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "group_memberships", :force => true do |t|
     t.integer  "group_id"
@@ -117,6 +126,15 @@ ActiveRecord::Schema.define(:version => 20100913095227) do
   end
 
   add_index "reports", ["user_id", "quiz_id"], :name => "index_reports_on_user_id_and_quiz_id"
+
+  create_table "supports", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "body"
+    t.string   "email"
+    t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

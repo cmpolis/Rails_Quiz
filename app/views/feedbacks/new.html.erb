@@ -1,0 +1,15 @@
+<h2>New Feedback Ticket</h2>
+<% form_for :feedback, :url => feedbacks_path do |f| %>
+  <table width="70%">
+  <%= error_messages_for :feedback %>
+  <tr>
+    <td colspan="2"><%= f.text_area :body, :size=>"50x6", :placeholder => "Please briefly describe your feedback." %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :email %></td>
+    <td><%= f.text_field :email %></td>
+  </tr>
+  <tr><td colspan="2"><center><%= submit_tag 'Submit Feedback', :disable_with => 'Please wait...' %></center></td></tr>
+  </table>
+  <br />
+<% end %>

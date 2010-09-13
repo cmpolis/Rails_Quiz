@@ -16,5 +16,6 @@
 <%= submit_tag "Submit quiz" %>
 <% end %>
 <br />
+<p><%= link_to "Report problem with quiz", new_report_path(:id => @quiz.id) %></p>
 </div>
 <%= render :partial=>"common/quiz_info", :locals => {:quiz => @quiz} %>

@@ -4,8 +4,8 @@ class PagesController < ApplicationController
     # @newest = Quiz.find_all_by_published(true, :limit => 10, :order => 'created_at')
     # @popular = Quiz.find_all_by_published(true, :limit => 10, :order => 'times_taken DESC')
 
-    @newest = Quiz.paginate :page => params[:newest_page], :order => 'created_at DESC'
-    @popular = Quiz.paginate :page => params[:popular_page], :order => 'times_taken DESC'
+    @newest = Quiz.paginate :page => params[:newest_page], :order => 'created_at DESC', :conditions => "published=true"
+    @popular = Quiz.paginate :page => params[:popular_page], :order => 'times_taken DESC', :conditions => "published=true"
 
     respond_to do |format|
       format.html

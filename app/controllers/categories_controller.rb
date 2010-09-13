@@ -20,7 +20,7 @@ class CategoriesController < ApplicationController
      flash[:notice] = "Invalid category ID"
      redirect_to root_url
    else
-     @quizzes = @category.quizzes.paginate :page => params[:page]
+     @quizzes = @category.quizzes.paginate :page => params[:page], :conditions => "published=true"
      respond_to do |format|
      format.html
      format.js {

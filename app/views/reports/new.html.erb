@@ -1,0 +1,18 @@
+<% title "Report Quiz Error" %>
+<h2>Report Error</h2>
+<h4>Quiz: <%= @quiz %></h4>
+<% form_for :report, :url => reports_path do |f| %>
+  <table width="70%">
+  <%= error_messages_for :report %>
+  <tr>
+    <td colspan="2"><%= f.text_area :text, :size=>"50x6", :placeholder => "Please briefly describe your problem." %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :reason, "Type of Report" %></td>
+    <td><%= select "report", "reason", Report.reasons_hash %></td>
+  </tr>
+  <%= f.hidden_field :quiz_id, :value => @quiz.id %>
+  <tr><td colspan="2"><center><%= submit_tag 'Submit Ticket', :disable_with => 'Please wait...' %></center></td></tr>
+  </table>
+  <br />
+<% end %>

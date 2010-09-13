@@ -6,6 +6,7 @@ class CreateReports < ActiveRecord::Migration
       t.string :text
       t.integer :quiz_id
       t.integer :reason
+      t.integer :status
 
       t.timestamps
     end

@@ -25,7 +25,10 @@ map.activate '/activate/:activation_code', :controller => 'users', :action => 'a
 
   map.faq '/faq', :controller => 'pages', :action => 'faq'
   map.usage '/usage', :controller => 'pages', :action => 'usage'
-  
+
+  map.resources :reports
+  map.resources :feedbacks
+  map.resources :supports  
   map.resources :comments
   map.resources :groups
   map.resources :users

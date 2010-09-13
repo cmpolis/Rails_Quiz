@@ -11,4 +11,8 @@ class Category < ActiveRecord::Base
     title
   end
 
+  def to_param
+    "#{id}-#{title.parameterize}"
+  end
+
 end

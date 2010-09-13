@@ -1,0 +1,15 @@
+<h2>New Support Ticket</h2>
+<% form_for :support, :url => supports_path do |f| %>
+  <table width="70%">
+  <%= error_messages_for :support %>
+  <tr>
+    <td colspan="2"><%= f.text_area :body, :size=>"50x6", :placeholder => "Please briefly describe your problem." %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :email %></td>
+    <td><%= f.text_field :email %></td>
+  </tr>
+  <tr><td colspan="2"><center><%= submit_tag 'Submit Ticket', :disable_with => 'Please wait...' %></center></td></tr>
+  </table>
+  <br />
+<% end %>
