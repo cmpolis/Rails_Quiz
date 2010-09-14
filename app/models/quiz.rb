@@ -6,16 +6,16 @@ class Quiz < ActiveRecord::Base
   belongs_to :group
   belongs_to :category
 
-  has_many :questions
+  has_many :questions, :dependent => :delete_all
   has_many :answers, :through => :questions
-  has_many :quiz_entries
+  has_many :quiz_entries, :dependent => :delete_all
   has_many :answer_entries, :through => :quiz_entries
   has_many :users, :through => :quiz_entries
 
-  has_many :taggings
+  has_many :taggings, :dependent => :delete_all
   has_many :tags, :through => :taggings
 
-  has_many :comments, :order => "created_at ASC"
+  has_many :comments, :dependent => :delete_all, :order => "created_at ASC"
   has_many :likes
 
   validates_inclusion_of :featured, :in => [true, false]

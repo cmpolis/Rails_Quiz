@@ -19,4 +19,13 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    if user_is_admin?
+      flash[:notice] = "Comment deleted #{Comment.delete params[:id]}"
+      redirect_to request.referer
+    else
+      flash[:notice] = "Must be admin to delete quiz"
+    end 
+  end
+
 end

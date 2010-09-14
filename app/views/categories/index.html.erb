@@ -4,7 +4,7 @@
   <div class="category">
   <% @categories.each do |cat| %>
     <h4><%= link_to cat, cat %></h4><ul>
-    <% cat.quizzes.all(:limit => 4, :order => "created_at").each do |quiz| %>
+    <% cat.quizzes.all(:conditions => "published=true", :limit => 4, :order => "created_at").each do |quiz| %>
       <li><%= link_to quiz.title, take_quiz_path(quiz) %></li>
     <% end %></ul>
   <% end %>

@@ -3,22 +3,21 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
-  #map.resources :users
 
-map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
+  map.admin '/admin', :controller => 'pages', :action => 'admin'
+  
+  map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
 
   map.resource :session
-
-  map.join_group '/join_group/:group_id', :controller => 'group_memberships', :action => 'create'
 
   map.add_question '/add_question/:id', :controller => 'questions', :action => 'new'
   
   map.take_quiz '/take_quiz/:id', :controller => 'quiz_entries', :action => 'new'
-  map.take_quiz_question '/take_quiz/:id/:question', :controller => 'quiz_entries', :action => 'single_question'  
+  # map.take_quiz_question '/take_quiz/:id/:question', :controller => 'quiz_entries', :action => 'single_question'  
 
   map.quiz_results '/results/:id', :controller => 'quiz_entries', :action => 'show'  
 
-  map.like '/like', :controller => 'likes', :action => 'create'
+  # map.like '/like', :controller => 'likes', :action => 'create'
   map.search '/search', :controller => 'quizzes', :action => 'search'
   
   map.random '/random', :controller => 'quizzes', :action => 'random'
@@ -26,15 +25,15 @@ map.activate '/activate/:activation_code', :controller => 'users', :action => 'a
   map.faq '/faq', :controller => 'pages', :action => 'faq'
   map.usage '/usage', :controller => 'pages', :action => 'usage'
 
-  map.resources :reports
-  map.resources :feedbacks
-  map.resources :supports  
-  map.resources :comments
-  map.resources :groups
-  map.resources :users
-  map.resources :quizzes
-  map.resources :questions
-  map.resources :categories
+  map.resources :reports, :only => [:new, :create, :index, :destroy]
+  map.resources :feedbacks, :only => [:new, :create, :index, :destroy]
+  map.resources :supports, :only => [:new, :create, :index, :destroy]
+  map.resources :comments, :only => [:new, :create, :destroy] 
+  # map.resources :groups
+  map.resources :users, :only => [:new, :edit, :update, :create, :show, :destroy]
+  map.resources :quizzes, :only => [:new, :create, :destroy]
+  map.resources :questions, :only => [:new, :create, :destroy]
+  map.resources :categories, :only => [:new, :create, :show, :destroy]
   map.resources :tags, :only => :show
   
   # Clearance::Routes.draw(map)

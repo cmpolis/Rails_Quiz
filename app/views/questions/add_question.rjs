@@ -1,0 +1,3 @@
+@question.answers.build
+page.replace_html :question_form, :partial => "list_form", :locals => { :f => f }
+logger.debug "Clicked"

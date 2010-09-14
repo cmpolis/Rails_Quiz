@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
 
   def index
-    @categories = Category.all
+    @categories = Category.all :include => :quizzes
   end  
 
   def create
@@ -37,4 +37,13 @@ class CategoriesController < ApplicationController
   def update
   end
 
+  def destroy
+    if user_is_admin?
+      flash[:notice] = "Category deleted #{Category.delete params[:id]}"
+      redirect_to request.referer
+    else
+      flash[:notice] = "Must be admin to delete category"
+    end
+  end
+  
 end

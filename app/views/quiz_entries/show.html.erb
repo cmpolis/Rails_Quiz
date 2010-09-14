@@ -24,6 +24,7 @@ Percentile: <%= @quiz_entry.percentile %></h4>
       data-text=<%= @quiz_entry.to_tweet %>
       data-count="none">Tweet</a>
 </p></div>
+<p><%= link_to("Delete Quiz", quiz_path(@quiz), :method => :delete) if user_is_admin?%></p>
 <h4>Comments:</h4>
 <div id="no_comments">
 <%= "<p>Be the first to comment</p>" if @quiz.comments.empty? %>

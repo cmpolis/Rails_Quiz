@@ -1,24 +1,18 @@
 <% title "Add question to #{@quiz.title}" %>
 
 <h3>Add question to <%= @quiz.title %></h3>
-<% form_for :question, @question, :url => {:action => :create} do |f| %>
-<%= f.error_messages %>
-<table>
-  <tr>
-    <td><%= f.label :text, "Question: "%>
-    <%= f.text_field :text %></td>
-    <%= f.hidden_field(:quiz_id, :value => @quiz.id)  %>
-  </tr>
-  <div id="answer_fields">
-  <% f.fields_for :answers do |answer_fields| %>
-    <tr>
-      <td><%= answer_fields.text_field :text %></td>
-    </tr>
-  <% end %>
-  </div>
-<% end %>
-</table>
-<br />
+
+  <% form_for :question, @question, :url => {:action => :create} do |f| %>
+  <div id="question_form"><%= render :partial => "list_form", :locals => { :f => f } %>
+</div>
+<!--
+<%= button_to_function "Add Answer", :id => "add_answer" do |page|
+  @question.answers.build;
+  page.replace_html :question_form, :partial => "list_form", :locals => { :f => f }
+end %>
+--!>
+
 <%= submit_tag "Add Question" %>
 <%= submit_tag "Publish Quiz"%>
+<% end %>
 <br />

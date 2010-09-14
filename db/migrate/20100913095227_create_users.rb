@@ -16,7 +16,6 @@ class CreateUsers < ActiveRecord::Migration
       # Custom fields
       t.string   :bio
       t.string   :location
-      t.string   :username
       t.boolean  :private
 
     end

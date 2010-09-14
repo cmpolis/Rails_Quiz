@@ -6,7 +6,7 @@ class Answer < ActiveRecord::Base
   has_many :answer_entries
   has_many :quiz_entries, :through => :answer_entries
 
-  validates_length_of :text, :in => (2..140)
+  validates_length_of :text, :in => (1..140)
   #validates_inclusion_of :right, :in => [true,false]
   
   # doesnt work with saving to unsaved 

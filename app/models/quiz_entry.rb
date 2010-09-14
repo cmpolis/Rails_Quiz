@@ -2,7 +2,7 @@ class QuizEntry < ActiveRecord::Base
   belongs_to :user
   belongs_to :quiz
 
-  has_many :answer_entries, :dependent => :destroy, :autosave => true
+  has_many :answer_entries, :dependent => :delete_all, :autosave => true
   accepts_nested_attributes_for :answer_entries
  
   has_many :answers, :through => :answer_entries

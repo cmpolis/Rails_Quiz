@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(:version => 20100913112118) do
     t.string   "text"
     t.integer  "quiz_id"
     t.integer  "reason"
+    t.integer  "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -165,7 +166,6 @@ ActiveRecord::Schema.define(:version => 20100913112118) do
     t.datetime "activated_at"
     t.string   "bio"
     t.string   "location"
-    t.string   "username"
     t.boolean  "private"
   end
 

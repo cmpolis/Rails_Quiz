@@ -6,6 +6,7 @@
 <tr>
   <td>ID</td>
   <td>Title</td>
+  <td>Creator</td>
   <td>Category</td>
   <td>delete</td>
   <td>Featured</td>
@@ -13,10 +14,51 @@
 <% @quizzes.each do |quiz| %>
   <tr>
     <td><%= quiz.id %></td>
-    <td><%= quiz.title %></td>
+    <td><%= quiz.title %><%= "(unpublished)" unless quiz.published %></td>
+    <td><%= link_to quiz.creator, quiz.creator %></td>
     <td><%= quiz.category.title unless quiz.category_id.nil? %></td>
     <td><%= link_to "delete", quiz_path(quiz), :method => :delete %></td>
     <td><%= quiz.featured %> | <%= link_to "X", :controller => "Quizzes", :action => "feature", :id => quiz.id %></td>
+  </tr>
+<% end %>
+</table>
+
+<h4>Catgories</h4>
+<table border="1">
+<tr>
+  <td>ID</td>
+  <td>Title</td>
+  <td>Parent</td>
+  <td># of quizzes</td>
+  <td>delete</td>
+</tr>
+<% @categories.each do |category| %>
+  <tr>
+    <td><%= category.id %></td>
+    <td><%= category.title %></td>
+    <td><%= category.parent %></td>
+    <td><%= category.quizzes.count %></td>
+    <td><%= link_to "delete", category_path(category), :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<h4>Comments</h4>
+<table border="1">
+<tr>
+  <td>ID</td>
+  <td>Text</td>
+  <td>Quiz</td>
+  <td>User</td>
+  <td>delete</td>
+</tr>
+<% @comments.each do |comment| %>
+  <tr>
+    <td><%= comment .id %></td>
+    <td><%= comment.text %></td>
+    <td><%= comment.quiz %></td>
+    <td><%= comment.user %></td>
+    <td><%= link_to "delete", comment_path(comment), :method => :delete %></td>
   </tr>
 <% end %>
 </table>
@@ -26,7 +68,8 @@
 <tr>
   <td>ID</td>
   <td>Username</td>
-  <td>Real name</td>
+  <td>Bio</td>
+  <td>Loc</td>
   <td>Quizzes taken</td>
   <td>Quizzes made</td>
 </tr>
@@ -34,7 +77,8 @@
   <tr>
     <td><%= user.id %></td>
     <td><%= user %></td>
-    <td><%= "#{user.last_name}, #{user.first_name}" %></td>
+    <td><%= user.bio %></td>
+    <td><%= user.location %></td>
     <td><%= user.quiz_entries.length %></td>
     <td><%= user.created_quizzes.length %></td>
     <td><%= link_to "delete", user_path(user), :method => :delete %></td>
@@ -51,8 +95,9 @@
   <%= submit_tag "Add category" %>
 <% end %>
 <h4>Stats</h4>
+<p>
 # of quizzes: <%= @quizzes.length %><br />
 # of users: <%= @users.length %><br />
-# of groups: <%= @groups.length %><br />
 # of quizzes taken: <%= @quiz_entries.length %><br />
+</p>
 <br />

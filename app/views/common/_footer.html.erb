@@ -47,6 +47,7 @@
 
   <p class="bottom-right">
     <%= link_to "Home", root_url%> |
+    <%= link_to("Admin Page", admin_path) if user_is_admin?  %>
     <strong><a href="#top">Back to Top</a></strong>
   </p>
 

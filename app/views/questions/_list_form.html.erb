@@ -1,0 +1,16 @@
+<%= f.error_messages %>
+<table>
+  <tr>
+    <td><%= f.label :text, "Question: "%>
+    <%= f.text_field :text %></td>
+    <%= f.hidden_field(:quiz_id, :value => @quiz.id)  %>
+  </tr>
+  <div id="answer_fields">
+  <% f.fields_for :answers do |answer_fields| %>
+    <tr>
+      <td><%= answer_fields.text_field :text, :placeholder => "answer" %></td>
+    </tr>
+  <% end %>
+  </div>
+</table>
+<br />

@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  
+
   def home
     # @newest = Quiz.find_all_by_published(true, :limit => 10, :order => 'created_at')
     # @popular = Quiz.find_all_by_published(true, :limit => 10, :order => 'times_taken DESC')
@@ -32,6 +32,8 @@ class PagesController < ApplicationController
       @groups = Group.all
       @quiz_entries = QuizEntry.all
       @category = Category.new
+      @comments = Comment.all
+      @categories = Category.all :include => :quizzes
     else
       flash[:notice] = "You do not have admin privelages"
       redirect_to root_url
