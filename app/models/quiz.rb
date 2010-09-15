@@ -32,9 +32,9 @@ class Quiz < ActiveRecord::Base
   def self.search query
     results = []
     tags = Tag.find(:all, :conditions => ["text like ?", "%#{query.downcase}%"])
-    tags.each { |t| results += t.quizzes }
-    results += Quiz.find(:all, :conditions => ["title like ?", "%#{query.downcase}%"])
-    results += Quiz.find(:all, :conditions => ["description like ?", "%#{query.downcase}%"])
+    tags.each { |t| results += t.quizzes.find(:all, :conditions => "published=true") }
+    results += Quiz.find(:all, :conditions => ["title like ? and published = ?", "%#{query.downcase}%", true])
+    results += Quiz.find(:all, :conditions => ["description like ? and published = ?", "%#{query.downcase}%", true])
     results.uniq
   end
 

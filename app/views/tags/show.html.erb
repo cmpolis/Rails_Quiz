@@ -1,3 +1,4 @@
-<h2>Quizzes tagged: <%= @tag.text %></h2>
-<p><%= render :partial => "common/quizline", :collection => @tag.quizzes %></p>
+<% title "tag: #{@tag}" %>
+<h2>Quizzes tagged: <%= @tag %></h2>
+<p><%= render :partial => "common/quizline", :collection => @quizzes %></p>
 <br />
