@@ -8,20 +8,6 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
 
-  module ActiveSupport
-    module Inflector
-      # Calling String#parameterize prints a warning under Ruby 1.9,
-      # even if the data in the string doesn't need transliterating.
-      # Maybe Rails 3 will have fixed it...?
-      if RAILS_GEM_VERSION =~ /^2\.3/
-        undef_method :transliterate
-        def transliterate(string)
-          string.dup
-        end
-      end
-    end
-  end
-
   # CLEARANCE
   # config.gem 'clearance'  
 
