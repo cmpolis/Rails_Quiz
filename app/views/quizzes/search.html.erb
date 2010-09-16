@@ -1,7 +1,7 @@
 <% title "Search results: #{params[:query]}" %>
 <h3>Search results for <%= params[:query] %></h3>
 <% if @quizzes.empty? %>
-  No matching quizzes <br />
+  <p>No matching quizzes </p>
 <% else %>
   <%= render :partial => "search_results" %>
 <% end %>

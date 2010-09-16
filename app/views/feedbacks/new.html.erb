@@ -4,11 +4,11 @@
   <table width="70%">
   <%= error_messages_for :feedback %>
   <tr>
-    <td colspan="2"><%= f.text_area :body, :size=>"50x6", :placeholder => "Please briefly describe your feedback." %></td>
+    <td colspan="2"><%= f.text_area :body, :size=>"50x6", :placeholder => "If you have any suggestions, please share! We appreaciate your feedback!" %></td>
   </tr>
   <tr>
     <td><%= f.label :email %></td>
-    <td><%= f.text_field :email %></td>
+    <td><%= f.text_field :email, :placeholder => "optional" %></td>
   </tr>
   <tr><td colspan="2"><center><%= submit_tag 'Submit Feedback', :disable_with => 'Please wait...' %></center></td></tr>
   </table>
